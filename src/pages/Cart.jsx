@@ -679,7 +679,7 @@ const Cart = () => {
                                     <Remove style={{fontSize:'17px'}}/>
                                 </ProductAmountContainer>
 
-                        <ProductPrice style={{fontSize:'17px'}}>ksh {product.price * product.quantity}</ProductPrice>
+                        <ProductPrice style={{fontSize:'17px'}}>ksh {product.discountedPrice ? (product.discountedPrice * product.quantity): (product.originalPrice * product.quantity) }</ProductPrice>
                             </PriceDetail>
 
 

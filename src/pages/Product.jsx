@@ -654,7 +654,7 @@ const Product = () => {
 
                     
 
-                     <Price>ksh {product.price}</Price>
+                     <Price>ksh {product.discountedPrice}</Price>
 
                      
 

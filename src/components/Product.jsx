@@ -160,7 +160,7 @@ const price = styled.span`
 
 text-align:center;
 
-font-weight:bold;
+font-weight:900;
 
 font-size:25px;
 
@@ -217,12 +217,12 @@ const product = ({item}) => {
 
                             <Title>{item.title}</Title>
 
-                            <price> ksh {item.price}</price>
+                            
 
                             
-                            <price style={{textDecoration:"line-through"}}> ksh {item.price} </price>
+                            {item.discountedPrice ? <price style={{textDecoration:"line-through"}}> ksh {item.originalPrice} </price>  : <price> ksh {item.discountedPrice}</price>}
 
-                            
+                            {item.discountedPrice && <price> ksh {item.discountedPrice}</price>}
 
                             {item && item?.ratings && item?.ratings.length > 0 ? showAverage(item) : ''}
 
@@ -240,7 +240,7 @@ const product = ({item}) => {
             </Link>
 
 
-            <Discount>{caclDiscount(600,100)}</Discount>
+            {item.discountedPrice && <Discount>{caclDiscount(item.originalPrice,item.discountedPrice)}</Discount>}
 
 
       </Container>
