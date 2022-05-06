@@ -26,7 +26,7 @@ const cartSlice = createSlice({
 
             state.products.push(action.payload);
 
-            state.total += action.payload.discountedPrice ? (action.payload.discountedPrice * action.payload.quantity) : (action.payload.originalPrice * action.payload.quantity);
+            state.total += (action.payload.price * action.payload.quantity);
 
 
         },

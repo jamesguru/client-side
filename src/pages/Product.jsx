@@ -452,6 +452,66 @@ font-size:18px;
 
 `
 
+
+const Wholesale = styled.div`
+
+
+color:#DCCA87;
+
+background-color: #0C0C0C;
+
+font-weight:900;
+
+font-size: 18px;
+
+margin:20px;
+
+padding:10px;
+
+
+@media screen and (max-width: 600px){
+
+    font-size:12px;
+
+    font-weight:900;
+ 
+    
+ 
+   
+  
+  
+      
+  }
+
+`
+
+const WholesaleText = styled.span`
+
+display:block;
+
+
+
+animation: progress 1s ease alternate infinite;
+
+
+@keyframes progress{
+
+
+    from{
+
+        transform:scale(0.95);
+
+    }
+
+    to{
+
+        transform:scale(1.0);
+    }
+}
+
+
+`
+
 const Rating = styled.div`
 
 display:flex;
@@ -500,10 +560,9 @@ const Product = () => {
 
     const [size, setSize] = React.useState("");
 
-    const [area,setArea] = React.useState("");
+    let price;
 
-    const [phone,setPhone] = React.useState("");
-
+    
     const dispatch = useDispatch();
 
     const handleQuantity = (action) => {
@@ -580,9 +639,14 @@ const Product = () => {
     
     const handleClick = () => {
 
-            dispatch(addProduct({...product, color, size, quantity,area,phone}));
+            dispatch(addProduct({...product, color, size, quantity,price}));
+
+            console.log(product);
 
     }
+
+
+    
 
 
     useEffect(() => {
@@ -613,6 +677,54 @@ const Product = () => {
 
 
     },[])
+
+
+
+    const handlePrice = (originalPrice, discountedPrice, wholePrice, minimumQuantity,quantity) => {
+
+
+        if(quantity > minimumQuantity && discountedPrice) {
+
+                discountedPrice = wholePrice;
+
+                price = discountedPrice;
+
+                return price;
+
+        }else if(quantity > minimumQuantity && originalPrice){
+
+
+            originalPrice = wholePrice;
+
+            price = originalPrice;
+
+
+            return price;
+
+
+        }else if(discountedPrice) {
+
+
+
+            price = discountedPrice;
+
+
+
+            return price;
+
+
+        }else{
+
+
+            price = originalPrice;
+
+
+            return price;
+        }
+
+
+
+    }
 
  
    
@@ -654,7 +766,10 @@ const Product = () => {
 
                     
 
-                     <Price>ksh {product.discountedPrice}</Price>
+                    
+
+
+                    <Price> ksh {handlePrice(product.originalPrice,product.discountedPrice,product.wholesalePrice,product.wholesaleMinimumQuantity, quantity)}</Price>
 
                      
 
@@ -721,13 +836,40 @@ const Product = () => {
 
 
 
+
+
+                    {product.wholesalePrice && product.wholesaleMinimumQuantity && product.wholesaleSeller &&(
+
+
+                        <Wholesale > 
+                         <WholesaleText> Wholesale</WholesaleText>                
+
+                    <WholesaleText>For items more than {product.wholesaleMinimumQuantity} items you get the whole price of ksh {product.wholesalePrice}</WholesaleText>
+
+                    <WholesaleText> Wholeseller: {product.wholesaleSeller}</WholesaleText>
+
+                    
+
+
+
+
+                        </Wholesale>
+
+
+
+                    )}
+
+                   
                    
 
                    
 
+                    
 
+                    {product.video && 
+                    
                     <DescVideo 
-                    src="https://firebasestorage.googleapis.com/v0/b/shop-web-6eba5.appspot.com/o/1646915289683Criminal%20Minds%20Trailer%20(1).mp4?alt=media&token=14c5a02e-736a-4a28-b3ad-291da238bdae" 
+                    src={product.video}
 
                     
 
@@ -739,7 +881,11 @@ const Product = () => {
                     
 
                     controls
-                    />
+                    />}
+
+
+
+                    
 
 
 

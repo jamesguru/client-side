@@ -579,7 +579,7 @@ const Navbar = () => {
 
                 <SearchContainer>
 
-                <Input placeholder="Search brands, products and categories" onChange={(e) => setSearch(e.target.value)}/>
+                <Input placeholder="Search brands, products, wholesellers and categories" onChange={(e) => setSearch(e.target.value)}/>
 
 
                 <Link to={ search ? `/search/${search}` : ''} style={{textDecoration:'none', color:'inherit', marginRight:''}}>
