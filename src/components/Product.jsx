@@ -220,7 +220,7 @@ const product = ({item}) => {
                             
 
                             
-                            {item.discountedPrice ? <price style={{textDecoration:"line-through"}}> ksh {item.originalPrice} </price>  : <price> ksh {item.discountedPrice}</price>}
+                            {item.discountedPrice ? <price style={{textDecoration:"line-through"}}> ksh {item.originalPrice} </price>  : <price> ksh {item.originalPrice}</price>}
 
                             {item.discountedPrice && <price> ksh {item.discountedPrice}</price>}
 
