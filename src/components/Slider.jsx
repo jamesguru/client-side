@@ -7,6 +7,7 @@ import {ArrowLeftOutlined ,ArrowRightOutlined } from '@material-ui/icons';
 import {useState,useEffect} from 'react';
 import Loader from './Loader';
 import axios from 'axios';
+import { publicRequest } from '../requestMethods';
 
 const Container = styled.div`
 
@@ -369,7 +370,7 @@ useEffect(() =>{
         try {
             
 
-            const res = await axios.get('http://localhost:4444/api/slider/');
+            const res = await publicRequest.get("/slider");
 
 
             setSlider(res.data);

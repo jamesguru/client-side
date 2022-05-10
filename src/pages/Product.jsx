@@ -162,9 +162,9 @@ right:0;
 
 const Price = styled.span`
 
-font-weight: 100;
+font-weight: 900;
 
-font-size: 30px;
+font-size: 25px;
 
 margin:20px;
 
@@ -491,7 +491,7 @@ display:block;
 
 
 
-animation: progress 1s ease alternate infinite;
+animation: progress 0.5s ease alternate infinite;
 
 
 @keyframes progress{
@@ -844,7 +844,7 @@ const Product = () => {
                         <Wholesale > 
                          <WholesaleText> Wholesale</WholesaleText>                
 
-                    <WholesaleText>For items more than {product.wholesaleMinimumQuantity} items you get the whole price of ksh {product.wholesalePrice}</WholesaleText>
+                    <WholesaleText>For items more than {product.wholesaleMinimumQuantity} items you get the whole price of ksh {product.wholesalePrice} per item.</WholesaleText>
 
                     <WholesaleText> Wholeseller: {product.wholesaleSeller}</WholesaleText>
 

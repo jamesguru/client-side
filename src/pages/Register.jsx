@@ -5,6 +5,7 @@ import React from 'react';
 import {mobile} from '../responsive';
 import axios from 'axios';
 import { Redirect,Link } from 'react-router-dom';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -167,7 +168,7 @@ const Register = () => {
 
         console.log(user);
 
-        await axios.post('http://localhost:4444/api/auth/register', user);
+        await publicRequest.post('/auth/register', user);
 
 
         <Redirect to="/login"/>

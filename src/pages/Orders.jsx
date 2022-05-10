@@ -19,6 +19,7 @@ import ModalReview from '../components/ReviewModal';
 import product from '../components/Product';
 import Loader from '../components/Loader';
 import NavCategory from '../components/NavCategory';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -295,7 +296,7 @@ const Orders = () => {
 
                 
 
-                const res = await axios.get(`http://localhost:4444/api/orders/find/${user._id}`);
+                const res = await publicRequest.get(`/orders/find/${user._id}`);
 
 
                 console.log(res.data);

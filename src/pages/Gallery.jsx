@@ -7,6 +7,7 @@ import axios from 'axios';
 import {format} from 'timeago.js';
 
 import Loader from '../components/Loader';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -327,7 +328,7 @@ const Gallery = () => {
                
 
 
-                    const res = await axios.get(query? `http://localhost:4444/api/gallery?search=${search}` : "http://localhost:4444/api/gallery/");
+                    const res = await publicRequest.get(query? `/gallery?search=${search}` : "/gallery/");
 
                     setGallery(res.data);
 

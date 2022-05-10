@@ -13,6 +13,7 @@ import axios from 'axios';
 
 import {showAverage} from '../rating';
 import Loader from './Loader';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -136,7 +137,7 @@ const Products = ({cat,filters,sort,query}) => {
                     if(cat){
 
 
-                         const res = await axios.get(`http://localhost:4444/api/products?category=${cat}&page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?category=${cat}&page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 
@@ -145,7 +146,7 @@ const Products = ({cat,filters,sort,query}) => {
 
                     }else if(query){
 
-                         const res = await axios.get(`http://localhost:4444/api/products?search=${query}&page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?search=${query}&page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 
@@ -156,7 +157,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-                         const res = await axios.get(`http://localhost:4444/api/products?page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 

@@ -128,7 +128,7 @@ align-items:center;
 justify-content:center;
 
 margin-bottom:50px;
-
+position:relative;
 flex-direction:column;
 
 `
@@ -168,7 +168,38 @@ font-family:"Cormorant Upright";
 
 `
 
+const Wholesale = styled.div`
 
+color:#DCCA87;
+
+background-color: #0C0C0C;
+
+
+font-weight: 900;
+
+padding:5px;
+
+position:absolute;
+
+top:0;
+
+
+left:0;
+
+
+@media screen and (max-width: 600px){
+
+    
+   
+    font-weight:500;
+     
+ }
+
+
+
+
+
+`
 
 
 
@@ -225,6 +256,9 @@ const product = ({item}) => {
                             {item.discountedPrice && <price> ksh {item.discountedPrice}</price>}
 
                             {item && item?.ratings && item?.ratings.length > 0 ? showAverage(item) : ''}
+
+
+                            {item.wholesalePrice && item.wholesaleSeller && <Wholesale>wholesale</Wholesale>}
 
 
 

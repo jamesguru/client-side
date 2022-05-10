@@ -8,6 +8,7 @@ import {useEffect,useState} from 'react';
 
 import axios from 'axios';
 import Loader from './Loader';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -169,7 +170,7 @@ const Promo = () => {
                     try {
 
 
-                        const res = await axios.get('http://localhost:4444/api/promotion');
+                        const res = await publicRequest.get("/promotion");
 
 
                         setPromo(res.data);

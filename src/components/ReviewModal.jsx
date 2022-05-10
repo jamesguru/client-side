@@ -10,6 +10,7 @@ import StarRating from 'react-star-ratings';
 import {toast, ToastContainer} from 'react-toastify';
 
 import {useSelector} from 'react-redux';
+import { publicRequest } from '../requestMethods';
 
 
 
@@ -216,9 +217,9 @@ const ModalReview = ({ name, id, orderId, status, setOpen}) => {
 
                 const singleRating = {"star":rating, "name":name, "postedBy": user._id,"comment":comment};
 
-                await rating && name && comment && axios.put(`http://localhost:4444/api/products/ratings/${id}`,singleRating);
+                await rating && name && comment && publicRequest.put(`/products/ratings/${id}`,singleRating);
 
-                await axios.put(`http://localhost:4444/api/orders/${orderId}`,{status: 4});
+                await publicRequest.put(`/orders/${orderId}`,{status: 4});
 
                 
                toast.success('Thank You for reviewing the product!!')

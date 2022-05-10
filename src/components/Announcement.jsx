@@ -3,6 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import {useEffect} from 'react';
 import Jumbtron from './Jumbtron';
+import { publicRequest } from '../requestMethods';
 
 const Container = styled.div`
 height: auto;
@@ -118,7 +119,7 @@ const Announcement = () => {
             try {
     
     
-                const res =  await axios.get('http://localhost:4444/api/annoucement/');
+                const res =  await publicRequest.get("/announcement");
 
 
                 setAnnoucement(res.data);
