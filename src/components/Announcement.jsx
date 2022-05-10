@@ -119,7 +119,7 @@ const Announcement = () => {
             try {
     
     
-                const res =  await publicRequest.get("/announcement");
+                const res =  await publicRequest.get("/annoucement");
 
 
                 setAnnoucement(res.data);
