@@ -13,6 +13,7 @@ import SearchProductList from './pages/SearchedProductList';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom'
 import Success from "./pages/Success";
 import { useSelector } from "react-redux";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 
@@ -31,7 +32,9 @@ const user = useSelector(state => state.user.currentuser);
 
       <Router>
 
+      <ScrollToTop />
 
+     
         <Switch>
 
           <Route exact path="/">
@@ -113,6 +116,9 @@ const user = useSelector(state => state.user.currentuser);
 
           </Route>
         </Switch>
+
+
+       
       </Router>
     
         
