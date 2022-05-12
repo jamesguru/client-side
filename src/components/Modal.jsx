@@ -6,6 +6,7 @@ import {useSelector} from 'react-redux';
 import {Close} from '@material-ui/icons';
 import { useHistory } from "react-router-dom";
 import  {Router} from 'react-router-dom';
+import { publicRequest } from '../../../admin-side/src/requestMethods';
 
 
 const Container = styled.div`
@@ -229,7 +230,7 @@ const Modal = ({total, products, setOpen}) => {
 
             
 
-            await axios.post('http://localhost:4444/api/orders/',order);
+            await publicRequest.post('/orders/',order);
 
 
             setOpen(false);

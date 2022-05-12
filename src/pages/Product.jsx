@@ -824,10 +824,10 @@ const Product = () => {
 
                            
 
-                            <Remove onClick = { () => handleQuantity("dec")} style={{backgroundColor:"#FF7BA9", color:"white"}}/>
+                            <Remove onClick = { () => handleQuantity("dec")} style={{backgroundColor:"#FF7BA9", color:"white", cursor:"pointer",fontSize:"20px"}}/>
 
                             <Amount>{quantity}</Amount>
-                            <Add onClick = { () => handleQuantity("inc")} style={{backgroundColor:"#FF7BA9", color:"white"}}/>
+                            <Add onClick = { () => handleQuantity("inc")} style={{backgroundColor:"#FF7BA9", color:"white", cursor:"pointer",fontSize:"20px"}}/>
                         </AmountController>
                         <Button onClick={handleClick}>add to Basket</Button>
 
