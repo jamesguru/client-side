@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux';
 import {Close} from '@material-ui/icons';
 import { useHistory } from "react-router-dom";
 import  {Router} from 'react-router-dom';
-import { publicRequest } from '../../../admin-side/src/requestMethods';
+import { publicRequest } from '../requestMethods';
 
 
 const Container = styled.div`
