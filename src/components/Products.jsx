@@ -241,7 +241,9 @@ const Products = ({cat,filters,sort,query}) => {
         }else if(sort === "asc"){
 
 
-            setfilteredProducts((prev) => [...prev].sort((a,b) => a.price - b.price));
+            setfilteredProducts((prev) => [...prev].sort((a,b) => a.originalPrice - b.originalPrice));
+
+            setfilteredProducts((prev) => [...prev].sort((a,b) => a.discountedPrice - b.discountedPrice));
 
 
         }else{
