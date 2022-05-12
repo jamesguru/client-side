@@ -249,7 +249,9 @@ const Products = ({cat,filters,sort,query}) => {
         }else{
 
 
-            setfilteredProducts((prev) => [...prev].sort((a,b) => b.price - a.price));
+            setfilteredProducts((prev) => [...prev].sort((a,b) => b.originalPrice - a.originalPrice));
+
+            setfilteredProducts((prev) => [...prev].sort((a,b) => b.discountedPrice - a.discountedPrice));
 
         }
 
