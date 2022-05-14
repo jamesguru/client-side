@@ -26,7 +26,9 @@ flex-direction:column;
 
 justify-content:space-between;
 
-margin-bottom: 60px;
+
+margin: 0px 20px;
+
 
 `
 
@@ -137,7 +139,7 @@ const Products = ({cat,filters,sort,query}) => {
                     if(cat){
 
 
-                         const res = await publicRequest.get(`/products?category=${cat}&page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?category=${cat}&page=${currentPage}&limit=10`);
 
                          setproducts(res.data);
 
@@ -146,7 +148,7 @@ const Products = ({cat,filters,sort,query}) => {
 
                     }else if(query){
 
-                         const res = await publicRequest.get(`/products?search=${query}&page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?search=${query}&page=${currentPage}&limit=10`);
 
                          setproducts(res.data);
 
@@ -157,7 +159,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-                         const res = await publicRequest.get(`/products?page=${currentPage}&limit=12`);
+                         const res = await publicRequest.get(`/products?page=${currentPage}&limit=10`);
 
                          setproducts(res.data);
 
@@ -282,7 +284,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-           
+         {products.length > 10 && (
         <Page>
 
 
@@ -338,6 +340,9 @@ activeClassName={'active-Item'}
 
 
         </Page>
+
+
+        )}
 
            
 

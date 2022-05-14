@@ -13,6 +13,7 @@ import Jumbtron from '../components/Jumbtron';
 import Promo from '../components/Promo'
 import NavCategory from '../components/NavCategory'
 import FadeLoader from "react-spinners/FadeLoader";
+import CatHeader from '../components/CatHeader'
 
 
 
@@ -21,10 +22,7 @@ const Home = () => {
     return (
         <div>
 
-            <Announcement/>
-
-           
-            
+            <Announcement/> 
             
             <Navbar />
 
@@ -35,7 +33,7 @@ const Home = () => {
             <Promo />
 
             <Categories />
-            <Brands />
+
 
             <Products />
 

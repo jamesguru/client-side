@@ -130,12 +130,22 @@ height: 90vh;
 
 const ImgContainer=styled.div`
 
-width: 50%;
+width: 55%;
 display:flex;
 
 margin-right:20px;
 
 flex-direction: flex-end;
+
+border-radius: 90%;
+background-color: #fcf1ed;
+
+
+
+height:50%;
+
+
+
 
 height:100%;
 
@@ -214,8 +224,6 @@ height:70%;
 
 width:50%;
 
-border-radius: 50%;
-background-color: #fcf1ed;
 
 
 @media screen and (max-width: 600px){

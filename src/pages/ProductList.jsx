@@ -223,7 +223,7 @@ const ProductList = () => {
 
             <Products cat={cat} query={query} filters={filters} sort={sort}/>
 
-            <Brands />
+          
 
             <Newsletter />
 

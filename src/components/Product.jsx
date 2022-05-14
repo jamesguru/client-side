@@ -43,9 +43,9 @@ transform:scale(1.05);
 
 const Image = styled.img`
 
-width:200px;
+width:250px;
 
-height:200px;
+height:300px;
 
 position:relative;
 
@@ -156,15 +156,15 @@ font-size:20px;
 `
 
 
-const price = styled.span`
+const Price = styled.span`
 
 text-align:center;
 
 font-weight:900;
 
-font-size:25px;
+font-size:18px;
 
-font-family:"Cormorant Upright";
+
 
 `
 
@@ -177,11 +177,13 @@ background-color: #0C0C0C;
 
 font-weight: 900;
 
-padding:5px;
+font-size:17px;
 
-position:absolute;
+padding:3px;
 
-top:0;
+
+
+bottom:0;
 
 
 left:0;
@@ -246,19 +248,21 @@ const product = ({item}) => {
 
                             <Image src={item.img} alt="" />
 
+                            {item.wholesalePrice && item.wholesaleSeller && <Wholesale>wholesale available</Wholesale>}
+
                             <Title>{item.title}</Title>
 
                             
 
-                            
-                            {item.discountedPrice ? <price style={{textDecoration:"line-through"}}> ksh {item.originalPrice} </price>  : <price> ksh {item.originalPrice}</price>}
+                            {item.discountedPrice && <Price> ksh {item.discountedPrice}</Price>}
+                            {item.discountedPrice ? <Price style={{textDecoration:"line-through"}}> ksh {item.originalPrice} </Price>  : <Price> ksh {item.originalPrice}</Price>}
 
-                            {item.discountedPrice && <price> ksh {item.discountedPrice}</price>}
+                           
 
                             {item && item?.ratings && item?.ratings.length > 0 ? showAverage(item) : ''}
 
 
-                            {item.wholesalePrice && item.wholesaleSeller && <Wholesale>wholesale</Wholesale>}
+                           
 
 
 

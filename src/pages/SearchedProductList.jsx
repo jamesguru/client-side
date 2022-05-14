@@ -229,7 +229,7 @@ const SearchProductList = () => {
 
             <Products query={query} cat={cat} filters={filters} sort={sort}/>
 
-            <Brands />
+            
 
             <Newsletter />
 

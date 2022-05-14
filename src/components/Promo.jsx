@@ -125,7 +125,7 @@ align-items:center;
 const Title = styled.span`
 
 
-font-size:55px;
+font-size:45px;
  color: white;
 font-weight:900;
  margin:20px
@@ -133,7 +133,7 @@ font-weight:900;
 
  @media screen and (max-width: 1500px){
 
-    font-size:35px;
+    font-size:20px;
 
 }
 
