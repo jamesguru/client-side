@@ -1,4 +1,4 @@
-import {React,useEffect} from 'react';
+import {React,useEffect,useState} from 'react';
 import styled from 'styled-components';
 
 
@@ -7,6 +7,7 @@ import Product from './Product';
 import { publicRequest } from '../requestMethods';
 import Loader from 'react-spinners/BounceLoader';
 import axios from 'axios';
+import { categories } from '../data';
 
 const Wrapper = styled.div`
 
@@ -62,52 +63,53 @@ margin: 30px;
 
 
 
-const CatBody = () => {
+const CatBody = ({cat}) => {
 
 
-    const [products, setProducts] = React.useState([]);
-    const [loading, setLoading] = React.useState(false);
+    const [products, setProducts]  =  useState([]);
+
+   
+
+
+    useEffect(() => {
+
+
+
+            const getProducts = async () => {
+
+
+                try {
+
+
+                    const res = await publicRequest.get(`/products?category=${cat}&page=1&limit=5`);
+
+
+                    setProducts(res.data);
+
+                    
+                } catch (error) {
+
+
+                    console.log('something went wrong');
+
+
+                    
+                }
+            }
+
+
+            getProducts()
+
+    },[])
+
+
+    
 
     
 
 
 
-    const cat = 'face';
-
-
-
-    useEffect(() =>{
-
-
-        setLoading(true);
-
-
-        const getProducts = async() => {
-
-
-
-            try {
-
-                    const res = await axios.get("http://localhost:4444/api/products");
-
-                    setProducts(res.data);
-                
-            } catch (error) {
-
-
-                
-            }
-        }
-
-
-        getProducts();
-
-        setLoading(false);
-
-    },[cat])
-
-
-console.log(products);
+    console.log(products);
 
     return (
 
@@ -116,11 +118,11 @@ console.log(products);
 
             <Container>
 
-            { cat && products.length && products?.map((item,index) => (<Product item={item} key={index}/>))};
+            { cat && products?.map((item,index) => (<Product item={item} key={index}/>))};
             </Container>
 
 
-            {loading && <Loader />}
+           
 
         </Wrapper>
         

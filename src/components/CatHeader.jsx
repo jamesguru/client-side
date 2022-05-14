@@ -5,6 +5,8 @@ import styled from 'styled-components';
 
 import {ArrowForward} from '@material-ui/icons';
 
+import {Link} from 'react-router-dom';
+
 
 
 const Container = styled.div`
@@ -81,24 +83,30 @@ margin:10px;
 
 
 
-const CatHeader = () => {
+const CatHeader = ({title}) => {
     return (
         <Container>
 
-            <Title>Facial Products</Title>
+            <Title>{title} products in our store</Title>
 
 
+            <Link style={{textDecoration:"none",color:"inherit"}}  to={`/products/${title.toLowerCase()}`} >
             
-            <Navigate>
+                <Navigate>
 
 
-            <Text>See more</Text>
+                <Text>See more</Text>
 
 
-            <ArrowForward />
+                <ArrowForward />
 
 
-            </Navigate>
+                </Navigate>
+            
+            
+            
+            </Link>
+            
             
             
         </Container>

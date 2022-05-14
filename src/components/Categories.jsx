@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {React,useEffect} from 'react';
+import {React,useEffect,useState} from 'react';
 
 import { publicRequest } from '../requestMethods';
 
@@ -27,105 +27,6 @@ flex-direction:column;
 const Categories = () => {
 
 
-    const [catbody, setCatBody] = React.useState([]);
-
-    const [catSpecial, setCatSpecial] = React.useState([]);
-
-    const [catBrand, setCatBrand] = React.useState([]);
-        
-        
-    useEffect(() =>{
-
-
-        const getCatBody =  async () => {
-    
-    
-    
-            try {
-    
-    
-                const res =  await publicRequest.get("/catbody");
-
-
-                setCatBody(res.data);
-
-
-
-                
-            } catch (error) {
-
-
-                console.log("something went wrong");
-                
-            }
-        }
-    
-        getCatBody();
-    
-    },[])
-
-    useEffect(() =>{
-
-
-        const getCatSpecial =  async () => {
-    
-    
-    
-            try {
-    
-    
-                const res =  await publicRequest.get("/specialoffer");
-
-
-                setCatSpecial(res.data);
-
-
-
-                
-            } catch (error) {
-
-
-                console.log("something went wrong");
-                
-            }
-        }
-    
-        getCatSpecial();
-    
-    },[])
-
-
-    useEffect(() =>{
-
-
-        const getCatBrand =  async () => {
-    
-    
-    
-            try {
-    
-    
-                const res =  await publicRequest.get("/brand");
-
-
-                setCatBrand(res.data);
-
-
-
-                
-            } catch (error) {
-
-
-                console.log("something went wrong");
-                
-            }
-        }
-    
-        getCatBrand();
-    
-    },[])
-
-
 
     return( 
         <Container>
@@ -133,8 +34,8 @@ const Categories = () => {
             
             <CategoryItem>
 
-                <CatHeader />
-                <CatBody />
+                <CatHeader title="Watch"/>
+                <CatBody  cat="watch"/>
 
 
             </CategoryItem>
@@ -142,11 +43,12 @@ const Categories = () => {
             
 
 
+
             
             <CategoryItem>
 
-                <CatHeader />
-                <CatBody />
+            <CatHeader title="Face"/>
+            <CatBody  cat="face"/>
 
 
             </CategoryItem>
@@ -156,9 +58,8 @@ const Categories = () => {
             
             <CategoryItem>
 
-                <CatHeader />
-                <CatBody />
-
+            <CatHeader title="Hand"/>
+            <CatBody  cat="hand"/>
 
             </CategoryItem>
 

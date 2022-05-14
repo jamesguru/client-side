@@ -34,9 +34,6 @@ const Home = () => {
 
             <Categories />
 
-
-            <Products />
-
             <Gallery />
 
             <Newsletter />
