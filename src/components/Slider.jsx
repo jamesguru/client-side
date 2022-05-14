@@ -14,7 +14,7 @@ const Container = styled.div`
 display: flex;
 
 height:80vh;
-
+margin:30px;
 width:100%;
 
 position: relative;
@@ -59,9 +59,9 @@ top: 0;
 bottom: 0;
 
 
-left: ${props => props.direction ==="left" && "20px"};
+left: ${props => props.direction ==="left" && "50px"};
 
-right: ${props => props.direction ==="right" && "20px"};
+right: ${props => props.direction ==="right" && "50px"};
 
 margin: auto;
 
@@ -130,7 +130,7 @@ height: 90vh;
 
 const ImgContainer=styled.div`
 
-width: 55%;
+width: 40%;
 display:flex;
 
 margin-right:20px;
@@ -218,11 +218,11 @@ justify-content:center;
 const InfoContainer= styled.div`
 
 
-padding: 30px;
+padding: 20px;
 
 height:70%;
 
-width:50%;
+width:40%;
 
 
 
@@ -284,7 +284,7 @@ margin: 50px 0px;
 
 font-size: 20px;
 
-font-weight: 500px;
+font-weight: 900px;
 
 letter-spacing: 3px;
 
@@ -309,7 +309,12 @@ padding: 15px;
 
 font-size: 18px;
 
-background-color: transparent;
+font-weight:900;
+
+background-color: #0C0C0C;
+color:#DCCA87;
+
+border:none;
 
 cursor:pointer;
 

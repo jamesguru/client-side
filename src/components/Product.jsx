@@ -38,12 +38,14 @@ transform:scale(1.05);
 
 
 
+
+
 `
 
 
 const Image = styled.img`
 
-width:250px;
+width:300px;
 
 height:300px;
 
@@ -140,12 +142,14 @@ text-align:center;
 
 font-weight:900;
 
+width:200px;
+
 font-size:20px;
 
 
 @media screen and (max-width: 600px){
 
-    
+    width:100px;
    
     font-size:15px;  
  

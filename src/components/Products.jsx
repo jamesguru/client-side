@@ -284,7 +284,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-         {products.length > 4 && (
+         {products.length > 8 && (
         <Page>
 
 

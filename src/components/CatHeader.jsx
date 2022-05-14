@@ -27,7 +27,13 @@ justify-content:space-between;
 padding:3px;
 color:#DCCA87;
 
-width: 30%;
+width: 25%;
+
+@media screen and (max-width: 900px){
+
+    width:80%;
+     
+ }
 
 
 `
@@ -43,7 +49,7 @@ align-items:center;
 justify-content:start;
 
 
-font-size:25px;
+font-size:18px;
 
 
 margin-left:35px;
@@ -51,6 +57,15 @@ margin-left:35px;
 
 
 font-weight:900;
+
+
+@media screen and (max-width: 900px){
+
+    margin-left:10px;
+
+    font-size:12px;
+     
+ }
 
 
 
@@ -83,19 +98,19 @@ margin:10px;
 
 
 
-const CatHeader = ({title}) => {
+const CatHeader = ({title, category}) => {
     return (
         <Container>
 
-            <Title>{title} products in our store</Title>
+            <Title>{title}</Title>
 
 
-            <Link style={{textDecoration:"none",color:"inherit"}}  to={`/products/${title.toLowerCase()}`} >
+            <Link style={{textDecoration:"none",color:"inherit"}}  to={`/products/${category.toLowerCase()}`} >
             
                 <Navigate>
 
 
-                <Text>See more</Text>
+                <Text>Explore</Text>
 
 
                 <ArrowForward />

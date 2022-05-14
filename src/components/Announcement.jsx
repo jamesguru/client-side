@@ -16,9 +16,8 @@ align-items: center;
 
 justify-content: center;
 
-font-size: 18px;
+font-size: 30px;
 
-font-weight: 700;
 
 
 
@@ -44,9 +43,8 @@ font-weight: 700;
 const Heading = styled.div`
 
  
-font-size:22px;
+font-size:23px;
 
-font-weight:900;
 
 font-family: "Cormorant Upright";
 
@@ -65,7 +63,7 @@ text-align:center;
 
 
     font-size:10px;
-    font-weight:900;
+    font-weight:700;
 
     
 }

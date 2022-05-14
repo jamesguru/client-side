@@ -81,7 +81,7 @@ const CatBody = ({cat}) => {
                 try {
 
 
-                    const res = await publicRequest.get(`/products?category=${cat}&page=1&limit=5`);
+                    const res = await publicRequest.get(`/products?category=${cat.toLowerCase()}&page=1&limit=8`);
 
 
                     setProducts(res.data);
@@ -103,13 +103,6 @@ const CatBody = ({cat}) => {
     },[])
 
 
-    
-
-    
-
-
-
-    console.log(products);
 
     return (
 

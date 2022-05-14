@@ -402,7 +402,7 @@ padding: 5px;
 
 font-size:20px;
 
-font-weight:bold;
+font-weight:900;
 
 border: none;
 

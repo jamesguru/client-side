@@ -8,7 +8,7 @@ import CatBody from './CatBody';
 
 
 const Container = styled.div`
-
+background-color:#AAAAA;
     
 `
 
@@ -27,42 +27,74 @@ flex-direction:column;
 const Categories = () => {
 
 
+    const [categories,setCategories] = useState([]);
+
+    useEffect(() => {
+
+
+
+        const getCategories = async () => {
+
+
+
+
+            try {
+
+
+
+                const res = await publicRequest.get('/category/');
+
+
+
+                setCategories(res.data);
+                
+            } catch (error) {
+
+
+                console.log(error);
+                
+            }
+        }
+
+
+        getCategories();
+    })
+
+console.log(categories);
 
     return( 
         <Container>
 
-            
-            <CategoryItem>
-
-                <CatHeader title="Watch"/>
-                <CatBody  cat="watch"/>
 
 
-            </CategoryItem>
+
+
+
+            {categories.length && categories.map((cat) => 
             
             
-
-
-
             
-            <CategoryItem>
-
-            <CatHeader title="Face"/>
-            <CatBody  cat="face"/>
-
-
-            </CategoryItem>
-
-
-
             
-            <CategoryItem>
+            (
 
-            <CatHeader title="Hand"/>
-            <CatBody  cat="hand"/>
 
-            </CategoryItem>
 
+                <>
+
+                <CategoryItem>
+
+                <CatHeader title={cat.title} category={cat.category}/>
+                <CatBody  cat={cat.category}/>
+
+
+                </CategoryItem>
+
+                </>
+            ))}
+            
+            
+            
+        
             
             
         </Container>);
