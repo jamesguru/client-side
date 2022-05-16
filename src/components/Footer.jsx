@@ -17,7 +17,8 @@ flex-direction:column;
 
 align-items:center;
 
-background-color: #222;
+background-color: #0C0C0C;
+
 
 
 @media screen and (max-width: 1100px){
@@ -45,9 +46,10 @@ background-color: #222;
 const Container = styled.div`
 
 
-background-color: #222;
+background-color: #0C0C0C;
 
-color: #AAAAAAAA;
+
+color:#DCCA87;
 
 align-items:center;
 height:60vh;
@@ -207,11 +209,11 @@ const Title = styled.span`
 
 margin-bottom: 50px;
 
-color: #AAAAAA;
+color:#DCCA87;
 margin-bottom:30px;
-
+font-weight:900;
 font-size:25px;
-font-family:'Cormorant Upright', serif;
+text-decoration:underline;
 
 `
 
@@ -281,7 +283,7 @@ const Footer = () => {
                 <Logo src="/img/dubois.png" alt=""/>
 
                 <Desc>
-                    "The Best Way To Find Yourself Is To Lose Yourself In The Service Of others"
+                    "The best part of beauty is that which no picture can express."
                 </Desc>
 
                 <SocialContainer>
