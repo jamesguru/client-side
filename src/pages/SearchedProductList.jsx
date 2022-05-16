@@ -72,7 +72,7 @@ const FilterText = styled.span`
 
 font-size: 20px;
 
-font-weight: 600;
+font-weight: 900;
 
 margin-right: 20px;
 
@@ -117,7 +117,7 @@ const Option = styled.option`
 
 font-size: 16px;
 
-font-weight: bold;
+font-weight: 900;
 
 `
 const SearchProductList = () => {
@@ -169,37 +169,75 @@ const SearchProductList = () => {
 
                     <FilterText>Filter Products:</FilterText>
 
-                    <Select name="color" onChange={handleFilters}>
+                    <Select name="concern" onChange={handleFilters}>
 
-                        <Option disabled>
+                        <Option disabled selected>
 
-                            Color
+                            Concern
 
                         </Option>
 
-                        <Option>white</Option>
-                        <Option>black</Option>
-                        <Option>red</Option>
-                        <Option>blue</Option>
-                        <Option>yellow</Option>
-                        <Option>green</Option>
+                        <Option>Dry Skin</Option>
+                        <Option>Pigmentation</Option>
+                        <Option>Oil Control</Option>
+                        <Option>Anti Acne</Option>
+                        <Option>Sunburn</Option>
+                        <Option>Skin Brightening</Option>
+                        <Option>Tan Removal</Option>
+                        <Option>Night Routine</Option>
+                        <Option>UV Protection</Option>
+                        <Option>Damaged Hair</Option>
+                        <Option>Frizzy Hair</Option>
+                        <Option>Stretch Marks</Option>
+                        <Option>Color Protection</Option>
+                        <Option>Dry Hair</Option>
+                        <Option>Soothing</Option>
+                        <Option>Dandruff</Option>
+                        <Option>Greying</Option>
+                        <Option>Hairfall</Option>
+                        <Option>Hair Color</Option>
+                        <Option>Well Being</Option>
+                        <Option>Acne</Option>
+                        <Option>HairGrowth </Option>
+                        
                     </Select>
 
-                        
+                <Select name="brand" onChange={handleFilters}>
 
-                <Select name="size" onChange={handleFilters}>
+                        <Option disabled selected>
 
-                        <Option disabled>
-
-                            Size
+                            Popular Brands
 
                         </Option>
 
-                        <Option>XS</Option>
-                        <Option>S</Option>
-                        <Option>M</Option>
-                        <Option>L</Option>
-                        <Option>XL</Option>
+                        <Option>Garnier</Option>
+                        <Option>Kylie</Option>
+                        <Option>Kiss Beauty</Option>
+                        <Option>Dr Rashel</Option>
+                        <Option>Luron</Option>
+                        <Option>Nivea</Option>
+                        <Option>Heaven Dove</Option>
+                        <Option>Disaar</Option>
+                        <Option>Johnsons Baby</Option>
+                        <Option>Rexona</Option>
+                        <Option>Kylie</Option>
+                        
+               
+                </Select>
+
+                <Select name="skintype" onChange={handleFilters}>
+
+                        <Option selected disabled>
+
+                            Skin type
+
+                        </Option>
+
+                        <Option>All</Option>
+                        <Option>Oily</Option>
+                        <Option>Dry</Option>
+                        <Option>Sensitive</Option>
+                        <Option>Normal</Option>
                
                 </Select>
                 </Filter>
@@ -223,7 +261,6 @@ const SearchProductList = () => {
                 </Filter>
                 
             </FilterContainer>
-
 
             
 

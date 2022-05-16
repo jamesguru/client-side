@@ -89,11 +89,24 @@ padding: 20px;
 const Logo = styled.img`
 
 
-width:100px;
+width:200px;
 
-height:100px;
+height:200px;
 
 object-fit:cover;
+
+
+@media screen and (max-width: 1100px){
+
+    
+    width:100px;
+
+    height:100px;   
+     
+ 
+  
+     
+ }
 
 `
 
@@ -101,9 +114,17 @@ const Desc = styled.p`
 
 margin: 20px 0px;
 
-font-size:15px;
+font-size:20px;
 
 font-weight:bold;
+@media screen and (max-width: 1100px){
+
+    
+   font-size:15px;
+     
+ }
+
+
 `
 
 const SocialContainer= styled.div`
@@ -256,9 +277,7 @@ const Footer = () => {
                 <Logo src="/img/dubois.png" alt=""/>
 
                 <Desc>
-                    We are the best in selling women clothes globally and we are much happy announce we have recorded
-                    numerous events or milestone in providing quality products interms of skin care and other things.
-                    We are therefore encourage you to look to our new products and leave a positive feedback.
+                    "The Best Way To Find Yourself Is To Lose Yourself In The Service Of others"
                 </Desc>
 
                 <SocialContainer>

@@ -6,6 +6,9 @@ import {mobile} from '../responsive';
 import axios from 'axios';
 import { Redirect,Link } from 'react-router-dom';
 import { publicRequest } from '../requestMethods';
+import Announcement from '../components/Announcement';
+import Navbar from '../components/Navbar';
+import NavCategory from '../components/NavCategory';
 
 
 
@@ -14,7 +17,9 @@ const Container = styled.div`
 
 width: 100vw;
 
-height: 100vh;
+height:80vh;
+
+margin:20px;
 
 
 display: flex;
@@ -24,13 +29,6 @@ align-items: center;
 justify-content: center;
 
 
-background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,1)),url("https://cdn.britannica.com/35/222035-050-C68AD682/makeup-cosmetics.jpg");
-
-background-repeat: no-repeat;
-
-background-position: center; 
-background-repeat: no-repeat; 
-background-size: cover;
 
 
 `
@@ -43,7 +41,9 @@ padding:20px;
 
 background-color: white;
 
+border: 2px solid grey;
 
+border-radius:10px;
 
 
 @media screen and (max-width: 900px){
@@ -91,13 +91,22 @@ flex: 1;
 
 min-width: 40%;
 
-font-size:14px;
+font-size:18px;
 
 font-weight:900;
 
 margin: 20px 10px 0px 0px;
 
 padding: 10px;
+
+
+@media screen and (max-width: 900px){
+
+    
+    padding: 5px;
+    font-size:10px;
+    
+}
 
 `
 
@@ -118,9 +127,11 @@ border: none;
 
 padding: 15px 20px;
 
-background-color: teal;
+background-color: #0C0C0C;
 
-color: white;
+color:#DCCA87;
+
+font-weight:900;
 
 cursor: pointer;
 
@@ -131,7 +142,7 @@ cursor: pointer;
     
     padding: 8px 10px;
     
-
+    width: 100%;
     font-weight:700;
     
 }
@@ -162,16 +173,28 @@ const Register = () => {
         e.preventDefault();
 
        
+        try {
 
 
         const user = {'username': username, 'password': password, 'email': email};
 
         console.log(user);
 
-        await publicRequest.post('/auth/register', user);
+        user && await publicRequest.post('/auth/register', user);
 
 
         <Redirect to="/login"/>
+            
+        } catch (error) {
+            
+
+
+
+
+
+        }
+
+        
 
 
         
@@ -183,6 +206,16 @@ const Register = () => {
 
 
     return (
+
+
+        <>
+
+
+        <Announcement />
+
+        <Navbar />
+
+        <NavCategory />
         <Container>
 
             <Wrapper>
@@ -195,8 +228,8 @@ const Register = () => {
                     
                     <Input placeholder="username" onChange={(e) => setUsername(e.target.value)}/>
                     <Input placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
-                    <Input placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
-                    <Input placeholder="confirm password"/>
+                    <Input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)}/>
+                    <Input type="password" placeholder="confirm password"/>
 
                     <Agreement>By creating an account, I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b></Agreement>
 
@@ -231,6 +264,8 @@ const Register = () => {
             </Wrapper>
             
         </Container>
+
+        </>
     )
 }
 

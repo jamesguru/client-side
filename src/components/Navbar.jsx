@@ -223,9 +223,9 @@ cursor:pointer;
 @media screen and (max-width: 900px){
 
     
-    width: 50px;
+    width: 100px;
 
-    height: 50px; 
+    height: 70px; 
 
 
     
@@ -242,7 +242,7 @@ cursor:pointer;
 
 
 
-${mobile({fontSize: "24px"})}
+
 
 `
 
@@ -258,9 +258,9 @@ display:flex;
 
 align-items: center;
 
-justify-content:flex-end;
+justify-content:space-between;
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 600px){
 
     
 
@@ -271,7 +271,7 @@ justify-content:flex-end;
     
 }
 
-@media screen and (min-width: 900px){
+@media screen and (min-width: 600px){
 
     
 
@@ -301,7 +301,7 @@ margin-left:20px;
     margin-left:10px;
 
 
-    font-size:10px;
+    font-size:15px;
 
     
 }
@@ -309,11 +309,11 @@ margin-left:20px;
 
 
 `
-const MenuItemText = styled.div`
+const MenuItemText = styled.span`
 
-margin-right:10px;
+margin-right:15px;
 
-font-size:15px;
+
 
 font-weight:900;
 transition: all 0.5s ease;
@@ -328,7 +328,7 @@ cursor:pointer;
 
 @media screen and (max-width: 900px){
 
-    margin-right:5px;
+    margin-right:15px;
 
     font-size:9px;
     
@@ -342,42 +342,7 @@ cursor:pointer;
 `
 
 
-const ListItem = styled.div`
 
-
-position: relative;
-
-margin-left: 20px;
-
-cursor:pointer;
-
-@media screen and (max-width: 900px){
-
-    
-    display:none;
-
-
-    
-}
-
-&:hover ${MenuItemText}{
-
-    @media screen and (max-width: 900px){
-
-    
-        opacity:1;
-    
-       
-    
-        
-    } 
-
-
-
-
-}
-
-`
 
 
 const Auth = styled.div`
@@ -430,7 +395,7 @@ position:relative;
     right:0;
 
     
-    font-size:5px;
+    font-size: 10px;
    
 
     
@@ -488,7 +453,7 @@ transition: all 1s ease;
 @media screen and (max-width: 600px){
 
     
-    padding: 5px;
+    padding: 2px;
 
     right: 0;
 
@@ -694,7 +659,7 @@ const Navbar = () => {
 
                
 
-                    <MenuItemText onClick={Logout}>Logout</MenuItemText>
+                    {user && <MenuItemText onClick={Logout}>Logout</MenuItemText>}
 
 
                

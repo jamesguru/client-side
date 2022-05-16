@@ -7,6 +7,9 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import {Redirect,Link} from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import NavCategory from '../components/NavCategory';
+import Announcement from '../components/Announcement';
 
 
 
@@ -14,9 +17,9 @@ const Container = styled.div`
 
 width: 100vw;
 
-height: 100vh;
+height: 80vh;
 
-
+margin:20px;
 display: flex;
 
 align-items: center;
@@ -24,13 +27,7 @@ align-items: center;
 justify-content: center;
 
 
-background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,1)), url("https://cdn.britannica.com/35/222035-050-C68AD682/makeup-cosmetics.jpg");
 
-background-repeat: no-repeat;
-
-background-position: center; 
-background-repeat: no-repeat; 
-background-size: cover;
 
 
 `
@@ -38,10 +35,12 @@ background-size: cover;
 const Wrapper = styled.div`
 
 width: 25%;
-
+border-radius:10px;
 padding:20px;
 
 background-color: white;
+
+border: 2px solid grey;
 
 @media screen and (max-width: 900px){
 
@@ -71,7 +70,7 @@ const Title = styled.h1`
 
 font-size: 24px;
 
-font-weight:300;
+font-weight:900;
 
 `
 
@@ -100,6 +99,21 @@ margin: 10px 0;
 
 padding: 10px;
 
+border: 1px solid black;
+
+@media screen and (max-width: 900px){
+
+    
+    
+    width: 75%;
+
+    padding:20px;
+    
+
+    
+    
+}
+
 `
 const  Button = styled.button`
 
@@ -109,9 +123,9 @@ border: none;
 
 padding: 15px 20px;
 
-background-color: teal;
+background-color: #0C0C0C;
 
-color: white;
+color:#DCCA87;
 
 cursor: pointer;
 
@@ -145,6 +159,7 @@ const LinkTo = styled.a`
 
 margin: 5px 0px;
 
+color: #0C0C0C;
 font-size: 15px;
 font-weight:bold;
 
@@ -227,8 +242,18 @@ const Login = () => {
 
     return (
 
+
+        <>
+
+        <Announcement />
+      
+        <Navbar />
+
+        <NavCategory />
             
         <Container>
+
+            
 
             <ToastContainer
             position="top-right"
@@ -295,6 +320,8 @@ const Login = () => {
             </Wrapper>
             
         </Container>
+
+        </>
        
     )
 }

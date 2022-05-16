@@ -45,7 +45,7 @@ transform:scale(1.05);
 
 const Image = styled.img`
 
-width:300px;
+width:250px;
 
 height:300px;
 

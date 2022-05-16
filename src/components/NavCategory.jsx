@@ -141,9 +141,11 @@ const NavCategory = () => {
         <Container>
 
             <Wrapper>
+            <Link to="/products/all" style={{color:'inherit', textDecoration:'none'}}>
+                <Cat>All products</Cat>
+            </Link>
 
-
-
+    
                 {NavCat.map((cat) => (
 
                 <Link to={`/products/${cat.cat}`} style={{color:'inherit', textDecoration:'none'}}>
@@ -159,7 +161,7 @@ const NavCategory = () => {
 
                 
                 
-
+            
 
             </Wrapper>
             

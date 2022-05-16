@@ -63,7 +63,7 @@ text-align:center;
 
 
     font-size:10px;
-    font-weight:700;
+    font-weight:500;
 
     
 }
@@ -97,7 +97,16 @@ animation: inProgress 0.4s ease infinite alternate;
 `
 
 
+const Jumbo = styled.div`
 
+
+width:20%;
+
+font-size:20px;
+
+font-weight:bold;
+
+`
 
 
 
@@ -142,7 +151,16 @@ const Announcement = () => {
 
             {annoucement.map((singleAnnoucement,index) => (<Heading key={index}>{singleAnnoucement.title}</Heading>))}
 
-            <Jumbtron />
+
+
+            <Jumbo>
+
+                    <Jumbtron />
+
+
+            </Jumbo>
+
+            
             
         </Container>
     )

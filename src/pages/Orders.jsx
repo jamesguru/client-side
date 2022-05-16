@@ -20,6 +20,7 @@ import product from '../components/Product';
 import Loader from '../components/Loader';
 import NavCategory from '../components/NavCategory';
 import { publicRequest } from '../requestMethods';
+import { Redirect } from 'react-router-dom';
 
 
 
@@ -488,7 +489,7 @@ const Orders = () => {
         {loading && <Loader />}
 
 
-        {user ? '' : <ModalLogin setOpen={setOpen}/> }
+        {user ? '' : <Redirect to="/login"/> }
 
         {open && <ModalReview name={name} id={productId} orderId={orderId} orderStatus={orderStatus} setOpen={setOpen}/>}
        

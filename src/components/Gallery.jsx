@@ -214,7 +214,7 @@ const Gallery = () => {
 
             <Right>
 
-            <Video src="https://firebasestorage.googleapis.com/v0/b/shop-web-6eba5.appspot.com/o/1646915289683Criminal%20Minds%20Trailer%20(1).mp4?alt=media&token=14c5a02e-736a-4a28-b3ad-291da238bdae"
+            <Video src=""
 
             loop
             muted

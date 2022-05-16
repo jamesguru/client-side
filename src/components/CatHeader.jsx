@@ -27,7 +27,7 @@ justify-content:space-between;
 padding:3px;
 color:#DCCA87;
 
-width: 25%;
+width: 30%;
 
 @media screen and (max-width: 900px){
 

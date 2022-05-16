@@ -7,6 +7,7 @@ import {Close} from '@material-ui/icons';
 import { useHistory } from "react-router-dom";
 import  {Router} from 'react-router-dom';
 import { publicRequest } from '../requestMethods';
+import { county } from '../data';
 
 
 const Container = styled.div`
@@ -275,17 +276,10 @@ const Modal = ({total, products, setOpen}) => {
 
                     <Select onChange={(e) => setLocation(e.target.value)}>
 
-                            <Option>Nairobi</Option>
 
-                            <Option>Nakuru</Option>
+                    {county.map((singleCounty) => (<Option>{singleCounty}</Option>))}
 
-                            <Option>Kisumu</Option>
-
-                            <Option>Mombasa</Option>
-
-                            <Option>Nyeri</Option>
-
-                            <Option>Meru</Option>
+                            
 
 
                     </Select>

@@ -781,14 +781,25 @@ const Product = () => {
                         <Filter>
 
 
+                        {product.concern.length && 
 
-                            <FilterTitle>Color</FilterTitle>
+                        <>
+                        <FilterTitle>Concern</FilterTitle>
+
+                            <FilterSize onChange={(e) => setSize(e.target.value)}>
 
 
-                           
 
-                           {product.color?.map((c) => (<FilterColor color={c} key={c} onClick={() => setColor(c)}/>))}
                             
+                                {product.concern?.map((s) => (<FilterSizeOption key={s} >{s}</FilterSizeOption>))}
+
+
+                                
+                            </FilterSize>
+
+                        </>
+
+                        }
 
                         </Filter>
 
@@ -797,18 +808,24 @@ const Product = () => {
 
                         <Filter>
 
-                            <FilterTitle>Size</FilterTitle>
+
+                            {product.skintype.length && <>
+
+                            <FilterTitle>Skin type</FilterTitle>
 
                             <FilterSize onChange={(e) => setSize(e.target.value)}>
 
 
 
                                
-                                {product.size?.map((s) => (<FilterSizeOption key={s} >{s}</FilterSizeOption>))}
+                                {product.skintype?.map((s) => (<FilterSizeOption key={s} >{s}</FilterSizeOption>))}
                             
                            
                                 
                             </FilterSize>
+
+
+                            </>}
                         </Filter>
                     </FilterContainer>
 

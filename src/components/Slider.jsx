@@ -8,6 +8,7 @@ import {useState,useEffect} from 'react';
 import Loader from './Loader';
 import axios from 'axios';
 import { publicRequest } from '../requestMethods';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
 
@@ -175,7 +176,7 @@ const Image = styled.img`
 
 
 
-object-fit: contain;
+object-fit: cover;
 
 margin:40px;
 
@@ -461,6 +462,9 @@ const handleClick = (direction) =>{
                ( <Slide bg={item.bg} index={item.index}>
 
 
+                  
+
+
                             <ImgContainer>
 
                                 <Image src={item.img}/>
@@ -469,7 +473,7 @@ const handleClick = (direction) =>{
                             </ImgContainer>
 
                             
-                            
+                    
 
                             <InfoContainer>
 
@@ -477,11 +481,16 @@ const handleClick = (direction) =>{
 
                                 <Desc>{item.desc}</Desc>
 
+                                <Link style={{color:'inherit',textDecoration:'none'}} to={`/product/${item.id}`}>       
+
                                 <Button>SHOP NOW</Button>
 
-
+                                </Link>
 
                             </InfoContainer>
+
+
+                   
                  </Slide>))
 
 

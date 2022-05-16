@@ -55,7 +55,7 @@ const Jumbtron = ({text}) => {
         <Container>
 
             <Typewriter options={{
-                        strings: ['Good Products!', 'Quality Products!', 'Best Deals!'],
+                        strings: ['Call 0727632051 for','Help', 'Consolutation and', 'Placing orders'],
                         autoStart: true,
                         loop: true,
                     }}/>

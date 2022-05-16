@@ -3,96 +3,55 @@
 
 
 
-export const categories = [
+export const county = [
 
-    {
-
-
-        id: 1,
-        
-        img: "https://i.pinimg.com/564x/36/27/b8/3627b8691e7c5ee5846b7f20e5dff7c8.jpg",
-        
-        title: "NAILS",
-
-        cat: 'women'
-        
-        
-        
-        
-        },
-        
-        
-        {
-        
-        
-            id: 2,
-            
-            img: "https://images.pexels.com/photos/977539/pexels-photo-977539.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-            
-            title: "FACIAL",
-
-            cat: 'beach',
-
-            
-           
-            
-            
-            },
-        
-        
-            {
-        
-        
-                id: 3,
-                
-                img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcalmmOOZT7F0xX8re_Kkvdw3mz9sXgrDWoA&usqp=CAU",
-                
-                title: "HAIR",
-
-                cat: 'face'
-                
-                
-                
-                },
-
-                {
-        
-        
-                    id: 3,
-                    
-                    img: "https://media.istockphoto.com/photos/attractive-black-girl-touching-her-smooth-skin-on-cheeks-picture-id1193032865?k=20&m=1193032865&s=170667a&w=0&h=9IjiuQGyFFEGFVana65YCEjRP58cg3oAXIgRb3skAvE=",
-                    
-                    title: "BODY",
-    
-                    cat: 'face'
-                    
-                    
-                    
-                    },
-
-
-                    {
-        
-        
-                        id: 4,
-                        
-                        img: "https://d2j6dbq0eux0bg.cloudfront.net/images/45335211/2415844199.jpg",
-                        
-                        title: "GIFT",
-        
-                        cat: 'gift'
-                        
-                        
-                        
-                        },
-    
-
-
-                
-
-
-                   
-    
+    "Nairobi",
+     "Kwale",
+     "Kilifi",
+     "Tana River",
+     "Lamu",
+     "Taita Taveta",
+     "Garissa",
+     "Wajir",
+     "Mandera",
+     "Marsabit",
+     "Isiolo",
+     "Meru",
+     "Tharaka Nithi",
+     "Embu",
+     "Kitui",
+     "Machakos",
+     "Makueni",
+     "Nyandarua",
+     "Nyeri",
+     "Kirinyaga",
+     "Murang’a",
+     "Kiambu",
+     "Turkana",
+     "West Pokot",
+     "Samburu",
+     "Trans-Nzoia",
+     "Uasin Gisshu",
+     "Elgeyo Marakwet",
+     "Nandi",
+     "Baringo",
+     "Laikipia",
+     "Nakuru",
+     "Narok",
+     "Kajiado", 
+     "Kericho",
+     "Bomet",
+     "Kakamega",
+     "Vihiga",
+     "Bungoma",
+     "Busia",
+     "Siaya",
+     "Kisumu",
+     "Homa Bay",
+     "Migori",
+     "Kisii",
+     "Nyamira",
+     "Mombasa",
 
                     
 
@@ -197,61 +156,7 @@ export const categories = [
 
 
 
-export const sliderItems= [{
 
-
-id: 1,
-
-img: "/img/makeup1.png",
-
-title: "SUMMER SALE",
-
-desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-
-bg: "fcf1ed"
-
-
-},
-
-
-{
-
-
-    id: 2,
-    
-    img: "/img/makeup3.png",
-    
-    title: "AUTUMN COLLECTION",
-    
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    
-    bg: "fcf1ed"
-    
-    
-    },
-
-
-    {
-
-
-        id: 3,
-        
-        img: "/img/original.png",
-    
-        
-        title: "LOUNGEWEAR LOVE",
-        
-        desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-        
-        bg: "fcf1ed"
-        
-        
-        },
-
-
-        
-
-];
 
 
 
@@ -332,7 +237,7 @@ export const NavCat = [
                     
                    
                     
-                    title: "Gifts",
+                    title: "Gifting",
             
                     cat: 'gift'
                     
