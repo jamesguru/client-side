@@ -15,6 +15,8 @@ display:flex;
 
 flex-direction:column;
 
+align-items:center;
+
 background-color: #222;
 
 
@@ -47,7 +49,7 @@ background-color: #222;
 
 color: #AAAAAAAA;
 
-
+align-items:center;
 height:60vh;
 
 padding:30px;
