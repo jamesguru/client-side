@@ -118,6 +118,8 @@ margin: 20px 0px;
 
 font-size:20px;
 
+color:#DCCA87;
+
 font-weight:bold;
 @media screen and (max-width: 1100px){
 

@@ -161,7 +161,7 @@ const ProductList = () => {
     }
 
     
-  
+  console.log(filters)
   
     return (
         <Container>
@@ -178,7 +178,7 @@ const ProductList = () => {
 
                     <FilterText>Filter Products:</FilterText>
 
-                    <Select name="color" onChange={handleFilters}>
+                    <Select name="concern" onChange={handleFilters}>
 
                         <Option disabled selected>
 
@@ -211,7 +211,7 @@ const ProductList = () => {
                         
                     </Select>
 
-                <Select name="size" onChange={handleFilters}>
+                <Select name="brand" onChange={handleFilters}>
 
                         <Option disabled selected>
 
@@ -234,7 +234,7 @@ const ProductList = () => {
                
                 </Select>
 
-                <Select name="size" onChange={handleFilters}>
+                <Select name="skintype" onChange={handleFilters}>
 
                         <Option selected disabled>
 

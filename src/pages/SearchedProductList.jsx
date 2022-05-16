@@ -261,7 +261,6 @@ const SearchProductList = () => {
                 </Filter>
                 
             </FilterContainer>
-
             
 
             <Products query={query} cat={cat} filters={filters} sort={sort}/>

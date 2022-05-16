@@ -649,35 +649,7 @@ const Product = () => {
     
 
 
-    useEffect(() => {
-
-
-
-        const getRelatedProducts = async () => {
-
-                try {
-                    
-
-                    const res = await axios.get("http://localhost:4444/api/products/related/" + id);
-
-
-                    setRelatedProducts(res.data);
-                } catch (error) {
-
-
-                    console.log('error');
-                    
-                }
-
-
-        }
-
-        getRelatedProducts();
-
-
-
-    },[])
-
+   
 
 
     const handlePrice = (originalPrice, discountedPrice, wholePrice, minimumQuantity,quantity) => {
@@ -781,9 +753,7 @@ const Product = () => {
                         <Filter>
 
 
-                        {product.concern.length && 
-
-                        <>
+                      
                         <FilterTitle>Concern</FilterTitle>
 
                             <FilterSize onChange={(e) => setSize(e.target.value)}>
@@ -797,9 +767,7 @@ const Product = () => {
                                 
                             </FilterSize>
 
-                        </>
-
-                        }
+                       
 
                         </Filter>
 
@@ -809,7 +777,7 @@ const Product = () => {
                         <Filter>
 
 
-                            {product.skintype.length && <>
+                            
 
                             <FilterTitle>Skin type</FilterTitle>
 
@@ -825,7 +793,7 @@ const Product = () => {
                             </FilterSize>
 
 
-                            </>}
+                         
                         </Filter>
                     </FilterContainer>
 
@@ -936,7 +904,7 @@ const Product = () => {
         
 
 
-        <RelatedProduct products={relatedProducts}/>
+       
             
 
 
