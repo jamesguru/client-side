@@ -601,7 +601,7 @@ const Cart = () => {
 
             <Wrapper>
 
-                <Title>YOUR BAG</Title>
+              
 
                 <Top> 
                     
@@ -619,9 +619,7 @@ const Cart = () => {
                     <TopTexts>
 
 
-                        <TopText>Shopping Bag(2)</TopText>
-
-                        <TopText>Your wishlist(0)</TopText>
+                      
                     </TopTexts>
 
                     <TopButton type = "filled">CHECKOUT NOW</TopButton>
