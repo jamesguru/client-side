@@ -251,9 +251,9 @@ align-items: center;
 
 const FilterTitle = styled.span`
 
-font-size : 20px;
+font-size : 15px;
 
-font-weight: 200px;
+font-weight: 900;
 
 `
 
