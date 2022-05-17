@@ -524,7 +524,7 @@ justify-content:center;
 
     font-size:12px;
  
-    margin-left:10px;
+    margin:30px;
 
     text-align:center;
  
@@ -734,7 +734,7 @@ const Product = () => {
 
                     
 
-                    {product && product?.ratings && product?.ratings.length > 0 ? showAverage(product) : <span style={{display:'block',margin:'auto', fontWeight:'bold'}}>no ratings yet</span>}
+                    {product && product?.ratings && product?.ratings.length > 0 ? showAverage(product) : <span style={{display:'block',margin:'auto', fontWeight:'bold'}}></span>}
 
                     
 

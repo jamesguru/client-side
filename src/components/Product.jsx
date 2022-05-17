@@ -197,8 +197,8 @@ left:0;
 
     
    
-    font-weight:500;
-     
+    font-weight:900;
+    font-size:12px;
  }
 
 
