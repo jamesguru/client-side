@@ -194,10 +194,10 @@ const ModalLogin = ({setOpen}) => {
 
             <Wrapper>
 
-            <Close onClick={() => setOpen(false)} style={{position:'absolute',top: '-12',right:'-12',color:'white', backgroundColor:'teal', height:'35px', width:'35px', borderRadius:'50%', cursor:'pointer'}}/>
+            
 
                     <Title style={{color:'black'}}>You are not authenticated</Title>
-
+                    <Title style={{color:'black'}}>Login to proceed</Title>
 
 
                     <Link  to="/login" style={{color:'inherit', textDecoration:'none'}}>

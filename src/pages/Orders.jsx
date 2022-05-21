@@ -374,6 +374,8 @@ const Orders = () => {
 
 
 
+
+
             <Title style={{color:'white', backgroundColor:'#FF7BA9', width:'20%',padding:'10px',display:'flex',alignItems:'center',justifyContent:'center'}}>My Orders</Title>
 
 

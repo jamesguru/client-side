@@ -11,7 +11,13 @@ const Container = styled.div`
 
 
 
+background-color:#F7F7F7;
 
+z-index: 999;
+
+margin-right:10px;
+
+margin-bottom:10px;
 transition: all 1s ease;
 position: relative;
 
@@ -20,6 +26,8 @@ cursor:pointer;
 
 
 &:hover{
+
+
 
 
 
@@ -45,9 +53,9 @@ transform:scale(1.05);
 
 const Image = styled.img`
 
-width:250px;
+width:200px;
 
-height:300px;
+height:auto;
 
 position:relative;
 
@@ -68,7 +76,7 @@ justify-content:center;
     
    width:100px;
 
-   height:100px;
+   height:auto;
 
    margin:15px;
     

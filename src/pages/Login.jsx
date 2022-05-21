@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+import {Close} from '@material-ui/icons';
 import {Redirect,Link} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import NavCategory from '../components/NavCategory';
@@ -15,18 +17,36 @@ import Announcement from '../components/Announcement';
 
 const Container = styled.div`
 
-width: 100vw;
+width:100%;
 
-height: 80vh;
+height: 100vh;
 
-margin:20px;
-display: flex;
+position:absolute;
 
-align-items: center;
+top:0;
 
-justify-content: center;
+left:0;
 
+display:flex;
 
+align-items:center;
+
+justify-content:center;
+
+background-color: rgba(0,0,0,0.6);
+
+z-index: 999;
+
+@media screen and (max-width: 600px){
+
+    width:100%;
+
+    height: 100vh; 
+   
+    
+ 
+    
+}
 
 
 
@@ -34,7 +54,7 @@ justify-content: center;
 
 const Wrapper = styled.div`
 
-width: 25%;
+width: 35%;
 border-radius:10px;
 padding:20px;
 
@@ -58,9 +78,36 @@ border: 2px solid grey;
 
 `
 
+
+
 const Error = styled.span`
 
 color: red;
+
+
+`
+
+
+const Image = styled.img`
+
+object-fit:cover;
+
+width:100%;
+
+height:150px;
+
+margin:10px;
+
+@media screen and (max-width: 900px){
+
+    
+    
+    height:100px;
+    
+
+    
+    
+}
 
 
 `
@@ -95,6 +142,8 @@ min-width: 40%;
 
 font-size:16px;
 
+font-weight:700;
+
 margin: 10px 0;
 
 padding: 10px;
@@ -107,7 +156,7 @@ border: 1px solid black;
     
     width: 75%;
 
-    padding:20px;
+    padding:5px;
     
 
     
@@ -152,6 +201,18 @@ transition: all 1s ease;
 
 }
 
+
+@media screen and (max-width: 900px){
+
+    
+    
+    padding: 5px 10px;
+    
+
+    
+    
+}
+
 `
 
 
@@ -166,6 +227,18 @@ font-weight:bold;
 text-decoration: underline;
 
 cursor: pointer;
+
+
+
+
+`
+
+
+const LinkClose = styled.div`
+
+
+
+
 
 
 `
@@ -267,29 +340,46 @@ const Login = () => {
             pauseOnHover
             />
 
+
+            
+
             <Wrapper>
 
+
+            <LinkClose>
+
+
+                <Link to="/" style={{color:"inherit", textDecoration:"none"}}>
+                
+                
+                
+               
+                
+                <Close style={{color:'#DCCA87', backgroundColor: "#0C0C0C", height:'40px', width:'40px', borderRadius:'50%', cursor:'pointer',margin:"-40px"}}/>
+                </Link>
+                
+            </LinkClose>
+
+                
+
                 <Title>LOGIN</Title>
+
+
+                <Image src="/img/Marketing.png" alt="" />
 
                
                 <Form>
 
 
-                    <Input placeholder="Email" onChange={(e) => setUsername(e.target.value)}/>
+                    <Input placeholder="usermane" onChange={(e) => setUsername(e.target.value)}/>
                     <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
                     
 
                    
 
                     <Button onClick={handleLogin} disabled={isFetching}> 
-                    
-
                            
-                            
                                     Login
-
-                   
-                        
                      </Button>
                     
 
@@ -312,12 +402,19 @@ const Login = () => {
                     
                     
                     </LinkTo>
+
+
+
+                   
                 </Form>
 
-
+                
 
 
             </Wrapper>
+
+
+            
             
         </Container>
 

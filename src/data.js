@@ -268,24 +268,7 @@ export const NavCat = [
 
 
 
-                            {
-
-
-                                id: 8,
-                                
-                               
-                                
-                                title: " Makeup Kit",
-                        
-                                cat: 'kit'
-                                
-                                
-                                
-                                
-                                },
-            
-        
-       
+                            
 
 
                 

@@ -10,15 +10,14 @@ import {Link} from 'react-router-dom';
 
 const Container = styled.div`
 
-height:50px;
+height:70px;
 
 cursor:pointer;
 
 
 
 
-
-margin:0px 30px;
+margin-top:5px;
 
 background-color: #0C0C0C;
 
@@ -56,7 +55,7 @@ justify-content:center;
 cursor:pointer;
 
 
-margin:auto;
+
 
 
 
@@ -77,7 +76,7 @@ padding:15px;
 font-size:16px;
 
 
-margin-right:35px;
+margin-right:20px;
 
 color:#DCCA87;
 
@@ -93,6 +92,9 @@ transition: all 0.5s ease;
     
 
     transform:scale(1.1);
+
+
+    border-bottom: 2px solid #DCCA87;
 }
 
 

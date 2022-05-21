@@ -19,6 +19,8 @@ align-items:center;
 
 background-color: #0C0C0C;
 
+color:#AAA;
+
 
 
 @media screen and (max-width: 1100px){
@@ -49,7 +51,7 @@ const Container = styled.div`
 background-color: #0C0C0C;
 
 
-color:#DCCA87;
+
 
 align-items:center;
 height:60vh;
@@ -120,7 +122,7 @@ margin: 20px 0px;
 
 font-size:20px;
 
-color:#DCCA87;
+color:#AAA;
 
 font-weight:bold;
 @media screen and (max-width: 1100px){
@@ -209,11 +211,11 @@ const Title = styled.span`
 
 margin-bottom: 50px;
 
-color:#DCCA87;
+color:#AAA;
 margin-bottom:30px;
 font-weight:900;
 font-size:25px;
-text-decoration:underline;
+
 
 `
 
@@ -228,6 +230,8 @@ display: flex;
 
 
 flex-wrap:wrap;
+
+color:#AAA;
 
 
 
@@ -249,6 +253,9 @@ const Right = styled.div`
 flex: 1;
 padding: 20px;
 font-weight:bold;
+
+color:#AAA;
+
 `
 
 const ContactItem = styled.div`
@@ -259,6 +266,8 @@ margin-bottom: 20px;
 display: flex;
 
 align-items: center;
+
+color:"#AAA";
 
 `
 
@@ -282,9 +291,15 @@ const Footer = () => {
 
                 <Logo src="/img/dubois.png" alt=""/>
 
-                <Desc>
+                <Desc style={{color:"#DCCA87"}}>
                     "The best part of beauty is that which no picture can express."
                 </Desc>
+                <Desc style={{fontSize:"16px"}}>
+                    Dubois beauty deals in selling and educating individuals on  skin care products while selling them in wholesale and retail.
+                    We deliver our products across the country  and outside country.
+                    You get free consolutation with us concerning beauty products. 
+                </Desc>
+
 
                 <SocialContainer>
 

@@ -19,6 +19,9 @@ import {showAverage} from '../rating';
 
 import RelatedProduct from '../components/RelatedProduct';
 
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import StarRating from 'react-star-ratings';
 import NavCategory from '../components/NavCategory';
 
@@ -556,9 +559,10 @@ const Product = () => {
 
     const [quantity, setQuantity] = React.useState(1);
     
-    const [color, setColor] = React.useState("");
+    const [concern, setConcern] = React.useState("");
 
-    const [size, setSize] = React.useState("");
+    const [skintype, setSkinType] = React.useState("");
+    const [disabled, setDisabled] = React.useState(false);
 
     let price;
 
@@ -639,9 +643,20 @@ const Product = () => {
     
     const handleClick = () => {
 
-            dispatch(addProduct({...product, color, size, quantity,price}));
+            dispatch(addProduct({...product, concern, skintype, quantity,price}));
 
-            console.log(product);
+
+            toast.success('Product has been added to basket successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
+            setDisabled(true);
 
     }
 
@@ -705,6 +720,22 @@ const Product = () => {
     return (
         <Container>
 
+
+        <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+
+            
+            />
+
+
             <Announcement />
             <Navbar />
             <NavCategory />
@@ -756,7 +787,7 @@ const Product = () => {
                       
                         <FilterTitle>Concern</FilterTitle>
 
-                            <FilterSize onChange={(e) => setSize(e.target.value)}>
+                            <FilterSize onChange={(e) => setConcern(e.target.value)}>
 
 
 
@@ -781,7 +812,7 @@ const Product = () => {
 
                             <FilterTitle>Skin type</FilterTitle>
 
-                            <FilterSize onChange={(e) => setSize(e.target.value)}>
+                            <FilterSize onChange={(e) => setSkinType(e.target.value)}>
 
 
 
@@ -814,7 +845,7 @@ const Product = () => {
                             <Amount>{quantity}</Amount>
                             <Add onClick = { () => handleQuantity("inc")} style={{backgroundColor:"#FF7BA9", color:"white", cursor:"pointer",fontSize:"20px"}}/>
                         </AmountController>
-                        <Button onClick={handleClick}>add to Basket</Button>
+                        <Button onClick={handleClick} disabled={disabled}>add to Basket</Button>
 
 
                     </AddContainer>

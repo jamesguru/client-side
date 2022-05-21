@@ -297,6 +297,12 @@ letter-spacing: 3px;
     
     margin: 20px 0px;
     
+
+
+    font-weight: 900px;
+
+
+    color:black;
     
 }
 

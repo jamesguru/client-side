@@ -27,7 +27,7 @@ flex-direction:column;
 justify-content:space-between;
 
 
-margin: 0px 20px;
+margin: 0px 5px;
 
 
 `
@@ -39,12 +39,12 @@ const Container = styled.div`
 
 display: flex;
 
-padding: 10px;
+padding: 5px;
 
 
 flex-wrap: wrap;
 
-margin: 30px;
+margin: 10px;
 
 
 @media screen and (max-width: 600px){

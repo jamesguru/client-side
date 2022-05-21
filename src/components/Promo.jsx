@@ -133,7 +133,7 @@ font-weight:900;
 
  @media screen and (max-width: 1500px){
 
-    font-size:20px;
+    font-size:10px;
 
 }
 
