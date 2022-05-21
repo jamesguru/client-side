@@ -16,7 +16,9 @@ align-items: center;
 
 justify-content: center;
 
-font-size: 30px;
+font-size: 25px;
+
+font-weight:900;
 
 
 
@@ -43,10 +45,9 @@ font-size: 30px;
 const Heading = styled.div`
 
  
-font-size:23px;
+font-size:20px;
 
 
-font-family: "Cormorant Upright";
 
 
 width: 80%;
