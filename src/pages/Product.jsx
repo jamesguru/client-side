@@ -779,55 +779,7 @@ const Product = () => {
                      
                     
 
-                    <FilterContainer>
-
-                        <Filter>
-
-
-                      
-                        <FilterTitle>Concern</FilterTitle>
-
-                            <FilterSize onChange={(e) => setConcern(e.target.value)}>
-
-
-
-                            
-                                {product.concern?.map((s) => (<FilterSizeOption key={s} >{s}</FilterSizeOption>))}
-
-
-                                
-                            </FilterSize>
-
-                       
-
-                        </Filter>
-
-                        
-                       
-
-                        <Filter>
-
-
-                            
-
-                            <FilterTitle>Skin type</FilterTitle>
-
-                            <FilterSize onChange={(e) => setSkinType(e.target.value)}>
-
-
-
-                               
-                                {product.skintype?.map((s) => (<FilterSizeOption key={s} >{s}</FilterSizeOption>))}
-                            
-                           
-                                
-                            </FilterSize>
-
-
-                         
-                        </Filter>
-                    </FilterContainer>
-
+                    
 
 
 

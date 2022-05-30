@@ -139,7 +139,7 @@ const Products = ({cat,filters,sort,query}) => {
                     if(cat){
 
 
-                         const res = await publicRequest.get(`/products?category=${cat}&page=${currentPage}&limit=10`);
+                         const res = await publicRequest.get(`/products?category=${cat}&page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 
@@ -148,7 +148,7 @@ const Products = ({cat,filters,sort,query}) => {
 
                     }else if(query){
 
-                         const res = await publicRequest.get(`/products?search=${query}&page=${currentPage}&limit=10`);
+                         const res = await publicRequest.get(`/products?search=${query}&page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 
@@ -159,7 +159,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-                         const res = await publicRequest.get(`/products?page=${currentPage}&limit=10`);
+                         const res = await publicRequest.get(`/products?page=${currentPage}&limit=12`);
 
                          setproducts(res.data);
 
