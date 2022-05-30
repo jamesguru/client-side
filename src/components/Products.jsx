@@ -285,11 +285,10 @@ const Products = ({cat,filters,sort,query}) => {
 
 
          
-        <Page>
+<Page>
 
 
-
-        <ReactPaginate 
+<ReactPaginate 
 
 
 previousLabel = {"Previous"}
