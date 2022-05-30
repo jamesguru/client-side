@@ -17,7 +17,6 @@ const Container = styled.div`
 position:sticky;
 
 
-border-radius:5px;
 
 
 
