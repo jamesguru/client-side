@@ -296,6 +296,8 @@ const Footer = () => {
                 </Desc>
                 <Desc style={{fontSize:"16px"}}>
                     Dubois beauty deals in selling and educating individuals on  skin care products while selling them in wholesale and retail.
+                    We also deals with gifts and you can get special message with the gift. Order gift for your loved ones and get them written
+                    special message for them.
                     We deliver our products across the country  and outside country.
                     You get free consolutation with us concerning beauty products. 
                 </Desc>
@@ -371,7 +373,7 @@ const Footer = () => {
                 <ContactItem>
 
                     <MailOutline style={{marginRight: "10px"}}/>
-                    info@contactdccosmetics.com
+                    duboisbeautyke@gmail.com
                     
                     </ContactItem>
 
