@@ -284,7 +284,7 @@ const Products = ({cat,filters,sort,query}) => {
 
 
 
-         {products.length > 8 && (
+         
         <Page>
 
 
@@ -301,7 +301,7 @@ nextLabel ={"Next"}
 breakLabel ={"..."}
 
 
-pageCount ={100}
+pageCount ={50}
 
 
 marginPagesDisplayed = {3}
@@ -342,11 +342,7 @@ activeClassName={'active-Item'}
         </Page>
 
 
-        )}
-
-           
-
-           {loading && <Loader />}
+       
 
 
         </Wrapper>
