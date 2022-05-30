@@ -17,7 +17,7 @@ z-index: 999;
 
 margin-right:10px;
 
-margin-bottom:10px;
+margin-bottom:5px;
 transition: all 1s ease;
 position: relative;
 
@@ -61,7 +61,7 @@ position:relative;
 
 margin:20px;
 
-object-fit: contain;
+object-fit: cover;
 
 display:flex;
 
