@@ -1,396 +1,285 @@
-import React from 'react'
-import styled from 'styled-components';
-import { Room, Facebook, Instagram, Twitter, Pinterest, Phone, MailOutline, YouTube } from '@material-ui/icons';
-import {mobile} from '../responsive';
-
-
-
-
-
+import React from "react";
+import styled from "styled-components";
+import {
+  Room,
+  Facebook,
+  Instagram,
+  Twitter,
+  Pinterest,
+  Phone,
+  MailOutline,
+  YouTube,
+} from "@material-ui/icons";
+import { mobile } from "../responsive";
 
 const Wrapper = styled.div`
+  display: flex;
 
+  flex-direction: column;
 
-display:flex;
+  align-items: center;
 
-flex-direction:column;
+  background-color: #0c0c0c;
 
-align-items:center;
+  height: auto;
+  color: #aaa;
 
-background-color: #0C0C0C;
+  @media screen and (max-width: 1100px) {
+    display: flex;
 
-color:#AAA;
+    flex-direction: column;
 
-
-
-@media screen and (max-width: 1100px){
-
-    
-    display:flex;
- 
-    flex-direction:column;
- 
     height: auto;
 
-    align-items:center;
+    align-items: center;
 
-    justify-content:center;
-     
- 
-  
-     
- }
-
-`
-
-
+    justify-content: center;
+  }
+`;
 
 const Container = styled.div`
+  background-color: #0c0c0c;
 
+  align-items: center;
+  height: auto;
 
-background-color: #0C0C0C;
+  padding: 30px;
 
+  display: flex;
 
+  @media screen and (max-width: 1100px) {
+    display: flex;
 
+    flex-direction: column;
 
-align-items:center;
-height:60vh;
+    height: auto;
+  }
 
-padding:30px;
-
-display: flex;
-
-
-@media screen and (max-width: 1100px){
-
-    
-   display:flex;
-
-   flex-direction:column;
-
-   height:auto;
-    
-
- 
-    
-}
-
-
-${mobile({flexDirection: "column"})}
-`
+  ${mobile({ flexDirection: "column" })}
+`;
 
 const Left = styled.div`
+  flex: 1;
 
-flex: 1;
+  display: flex;
 
-display: flex;
+  flex-direction: column;
 
-flex-direction: column;
-
-padding: 20px;
-
-
-`
+  padding: 20px;
+`;
 
 const Logo = styled.img`
+  width: 200px;
 
+  height: 200px;
 
-width:200px;
+  object-fit: cover;
 
-height:200px;
+  @media screen and (max-width: 1100px) {
+    width: 100px;
 
-object-fit:cover;
-
-
-@media screen and (max-width: 1100px){
-
-    
-    width:100px;
-
-    height:100px;   
-     
- 
-  
-     
- }
-
-`
+    height: 100px;
+  }
+`;
 
 const Desc = styled.p`
+  margin: 20px 0px;
 
-margin: 20px 0px;
+  font-size: 20px;
 
-font-size:20px;
+  color: #aaa;
 
-color:#AAA;
+  font-weight: bold;
+  @media screen and (max-width: 1100px) {
+    font-size: 15px;
+  }
+`;
 
-font-weight:bold;
-@media screen and (max-width: 1100px){
-
-    
-   font-size:15px;
-     
- }
-
-
-`
-
-const SocialContainer= styled.div`
-
-display: flex;
-
-
-
-
-
-
-
-`
+const SocialContainer = styled.div`
+  display: flex;
+`;
 const SocialIcon = styled.div`
+  width: 40px;
 
+  height: 40px;
 
-width: 40px;
+  border-radius: 50%;
 
-height: 40px;
+  color: white;
 
-border-radius:50%;
+  background-color: #${(props) => props.color};
 
-color: white;
+  display: flex;
 
-background-color: #${props => props.color};
+  align-items: center;
 
-display: flex;
+  justify-content: center;
 
-align-items: center;
+  margin: 20px;
 
-justify-content: center;
+  margin-bottom: 50px;
 
-margin: 20px;
+  cursor: pointer;
 
-margin-bottom: 50px;
-
-cursor:pointer;
-
-@media screen and (max-width: 1100px){
-
-    
+  @media screen and (max-width: 1100px) {
     width: 30px;
 
     height: 30px;
 
-    border-radius:50%;
-
+    border-radius: 50%;
 
     display: flex;
 
-align-items: center;
+    align-items: center;
 
-justify-content: center;
-
-    
-
- 
-    
-}
-
-
-`
-
-
+    justify-content: center;
+  }
+`;
 
 const Center = styled.div`
+  flex: 1;
 
-flex: 1;
-
-padding: 20px;
-${mobile({display: "none"})}
-
-`
+  padding: 20px;
+  ${mobile({ display: "none" })}
+`;
 
 const Title = styled.span`
+  margin-bottom: 50px;
 
-margin-bottom: 50px;
-
-color:#AAA;
-margin-bottom:30px;
-font-weight:900;
-font-size:25px;
-
-
-`
+  color: #aaa;
+  margin-bottom: 30px;
+  font-weight: 900;
+  font-size: 25px;
+`;
 
 const List = styled.ul`
-margin-top:20px;
+  margin-top: 20px;
 
-padding:0px;
+  padding: 0px;
 
-list-style:none;
+  list-style: none;
 
-display: flex;
+  display: flex;
 
+  flex-wrap: wrap;
 
-flex-wrap:wrap;
-
-color:#AAA;
-
-
-
-`
+  color: #aaa;
+`;
 
 const ListItem = styled.li`
+  width: 50%;
 
+  margin-bottom: 10px;
 
-width: 50%;
-
-margin-bottom: 10px;
-
-font-weight:bold;
-
-`
+  font-weight: bold;
+`;
 
 const Right = styled.div`
+  flex: 1;
+  padding: 20px;
+  font-weight: bold;
 
-flex: 1;
-padding: 20px;
-font-weight:bold;
-
-color:#AAA;
-
-`
+  color: #aaa;
+`;
 
 const ContactItem = styled.div`
+  margin-bottom: 20px;
 
+  display: flex;
 
-margin-bottom: 20px;
+  align-items: center;
 
-display: flex;
-
-align-items: center;
-
-color:"#AAA";
-
-`
-
-
-
-
-
+  color: "#AAA";
+`;
 
 const Footer = () => {
-    return (
+  return (
+    <Wrapper>
+      <Container>
+        <Left>
+          <Logo src="/img/dubois.png" alt="" />
 
+          <Desc style={{ color: "#DCCA87" }}>
+            "The best part of beauty is that which no picture can express."
+          </Desc>
+          <Desc style={{ fontSize: "16px" }}>
+            Dubois beauty deals in selling and educating individuals on skin
+            care products while selling them in wholesale and retail. We also
+            deals with gifts and you can get special message with the gift.
+            Order gift for your loved ones and get them written special message
+            for them. We deliver our products across the country and outside
+            country. You get free consolutation with us concerning beauty
+            products.
+          </Desc>
 
-        <Wrapper>
+          <SocialContainer>
+            <SocialIcon color="3B5999">
+              <Facebook />
+            </SocialIcon>
 
+            <SocialIcon color="E4405F">
+              <Instagram />
+            </SocialIcon>
 
-        
-        <Container>
+            <SocialIcon color="55ACEE">
+              <Twitter />
+            </SocialIcon>
 
-            <Left>
+            <SocialIcon color="E60023">
+              <Pinterest />
+            </SocialIcon>
 
+            <SocialIcon color="E60023">
+              <YouTube />
+            </SocialIcon>
+          </SocialContainer>
+        </Left>
 
-                <Logo src="/img/dubois.png" alt=""/>
+        <Center>
+          <Title>Useful links</Title>
 
-                <Desc style={{color:"#DCCA87"}}>
-                    "The best part of beauty is that which no picture can express."
-                </Desc>
-                <Desc style={{fontSize:"16px"}}>
-                    Dubois beauty deals in selling and educating individuals on  skin care products while selling them in wholesale and retail.
-                    We also deals with gifts and you can get special message with the gift. Order gift for your loved ones and get them written
-                    special message for them.
-                    We deliver our products across the country  and outside country.
-                    You get free consolutation with us concerning beauty products. 
-                </Desc>
+          <List>
+            <ListItem>Home</ListItem>
+            <ListItem>Cart</ListItem>
+            <ListItem>My Account</ListItem>
+            <ListItem>Order Tracking</ListItem>
+            <ListItem>Wish Listing</ListItem>
+            <ListItem>Terms</ListItem>
+          </List>
+        </Center>
 
+        <Right>
+          <Title>Contact us.</Title>
 
-                <SocialContainer>
+          <ContactItem style={{ marginTop: "20px" }}>
+            <Room style={{ marginRight: "10px" }} />
+            PO BOX 198-50056 NAIROBI, KENYA
+          </ContactItem>
+          <ContactItem>
+            <Phone style={{ marginRight: "10px" }} />
+            +254727632051
+          </ContactItem>
+          <ContactItem>
+            <MailOutline style={{ marginRight: "10px" }} />
+            duboisbeautyke@gmail.com
+          </ContactItem>
+        </Right>
+      </Container>
 
-                    <SocialIcon color = "3B5999">
+      <span
+        style={{
+          marginBottom: "60px",
+          width: "100%",
+          color: "white",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        Developed by Bantu Tech &copy; 2023
+      </span>
+    </Wrapper>
+  );
+};
 
-                        <Facebook />
-
-                    </SocialIcon>
-
-                    <SocialIcon color = "E4405F">
-
-                        <Instagram />
-                
-                    </SocialIcon>
-
-                    <SocialIcon color = "55ACEE">
-
-                        <Twitter />
-                        
-                    </SocialIcon>
-
-                    <SocialIcon color="E60023">
-
-                        <Pinterest />
-                    </SocialIcon>
-
-
-                    <SocialIcon color="E60023">
-
-                        <YouTube />
-                    </SocialIcon>
-                </SocialContainer>
-            </Left>
-
-            <Center>
-
-
-                <Title >Useful links</Title>
-
-                <List>
-
-                    <ListItem>Home</ListItem>
-                    <ListItem>Cart</ListItem>
-                    <ListItem>My Account</ListItem>
-                    <ListItem>Order Tracking</ListItem>
-                    <ListItem>Wish Listing</ListItem>
-                    <ListItem>Terms</ListItem>
-                    
-                </List>
-            </Center>
-
-            <Right>
-
-
-                <Title >Contact us.</Title>
-
-                <ContactItem style={{marginTop:"20px"}} >
-                    
-                    <Room style={{marginRight: "10px"}}/>
-                    PO BOX 198-50056 NAIROBI, KENYA
-                    
-                    </ContactItem>
-                <ContactItem>
-
-                    <Phone style={{marginRight: "10px"}}/>
-                    +254727632051
-                    
-                    </ContactItem>
-                <ContactItem>
-
-                    <MailOutline style={{marginRight: "10px"}}/>
-                    duboisbeautyke@gmail.com
-                    
-                    </ContactItem>
-
-                    
-            </Right>
-
-
-           
-        </Container>
-
-
-
-        <span style={{marginBottom:"60px" ,width:"100%", color:'white', display:'flex', alignItems:'center',justifyContent:'center'}}>Developed by Dopesick &copy; 2022</span>
-
-
-        </Wrapper>
-    )
-}
-
-export default Footer
+export default Footer;

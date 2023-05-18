@@ -102,7 +102,7 @@ width: 100vw;
 
 height: 90vh; 
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1200px){
 
     
     height: auto;

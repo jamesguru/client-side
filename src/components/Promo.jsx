@@ -52,7 +52,7 @@ background-attachment: fixed;
 
 
 
-@media screen and (max-width: 1500px){
+@media screen and (max-width: 1200px){
 
     display: flex;
     flex-direction:column;
