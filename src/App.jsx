@@ -21,6 +21,8 @@ import { useSelector } from "react-redux";
 import ScrollToTop from "./components/ScrollToTop";
 import Seller from "./pages/Seller";
 import DashBoard from "./pages/DashBoard";
+import Menu from "./pages/Menu";
+import Shop from "./pages/Shop";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentuser);
@@ -46,6 +48,9 @@ const App = () => {
           <Route path="/cart">
             <Cart />
           </Route>
+          <Route path="/menu">
+            <Menu />
+          </Route>
 
           <Route path="/success">
             <Success />
@@ -53,6 +58,9 @@ const App = () => {
 
           <Route path="/search/:search">
             <SearchProductList />
+          </Route>
+          <Route path="/shop/:shop">
+            <Shop />
           </Route>
 
           <Route path="/orders/:id">
@@ -65,9 +73,7 @@ const App = () => {
           <Route path="/seller">
             <Seller />
           </Route>
-          <Route path="/dashboard">
-            <DashBoard />
-          </Route>
+
 
           <Route path="/login">
             {user ? <Redirect exact to="/" /> : <Login />}

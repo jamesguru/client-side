@@ -1,426 +1,285 @@
-import React from 'react'
-import styled from 'styled-components';
-import {mobile} from '../responsive';
-import { login } from '../redux/apiCalls';
-import { useDispatch, useSelector } from 'react-redux';
-import {toast, ToastContainer} from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-
-import {Close} from '@material-ui/icons';
-import {Redirect,Link} from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import NavCategory from '../components/NavCategory';
-import Announcement from '../components/Announcement';
-
-
+import React from "react";
+import styled from "styled-components";
+import { mobile } from "../responsive";
+import { login } from "../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Close } from "@material-ui/icons";
+import { Redirect, Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import NavCategory from "../components/NavCategory";
+import Announcement from "../components/Announcement";
 
 const Container = styled.div`
+  width: 100%;
 
-width:100%;
+  height: 100vh;
 
-height: 100vh;
+  position: absolute;
 
-position:absolute;
+  top: 0;
 
-top:0;
+  left: 0;
 
-left:0;
+  display: flex;
 
-display:flex;
+  align-items: center;
 
-align-items:center;
+  justify-content: center;
 
-justify-content:center;
+  background-color: rgba(0, 0, 0, 0.6);
 
-background-color: rgba(0,0,0,0.6);
+  z-index: 999;
 
-z-index: 999;
+  @media screen and (max-width: 600px) {
+    width: 100%;
 
-@media screen and (max-width: 600px){
-
-    width:100%;
-
-    height: 100vh; 
-   
-    
- 
-    
-}
-
-
-
-`
+    height: 100vh;
+  }
+`;
 
 const Wrapper = styled.div`
+  width: 35%;
+  border-radius: 10px;
+  padding: 20px;
 
-width: 35%;
-border-radius:10px;
-padding:20px;
+  background-color: white;
 
-background-color: white;
+  border: 2px solid grey;
 
-border: 2px solid grey;
-
-@media screen and (max-width: 900px){
-
-    
-    
+  @media screen and (max-width: 900px) {
     width: 75%;
 
-    padding:20px;
-    
-
-    
-    
-}
-
-
-`
-
-
+    padding: 20px;
+  }
+`;
 
 const Error = styled.span`
-
-color: red;
-
-
-`
-
+  color: red;
+`;
 
 const Image = styled.img`
+  object-fit: cover;
 
-object-fit:cover;
+  width: 100%;
 
-width:100%;
+  height: 150px;
 
-height:150px;
+  margin: 10px;
 
-margin:10px;
-
-@media screen and (max-width: 900px){
-
-    
-    
-    height:100px;
-    
-
-    
-    
-}
-
-
-`
-
+  @media screen and (max-width: 900px) {
+    height: 100px;
+  }
+`;
 
 const Title = styled.h1`
+  font-size: 24px;
 
-font-size: 24px;
-
-font-weight:900;
-
-`
-
-
+  font-weight: 900;
+`;
 
 const Form = styled.form`
-
-
-display: flex;
-flex-direction: column;
-
-`
-
-
+  display: flex;
+  flex-direction: column;
+`;
 
 const Input = styled.input`
+  flex: 1;
 
+  min-width: 40%;
 
-flex: 1;
+  font-size: 16px;
 
-min-width: 40%;
+  font-weight: 700;
 
-font-size:16px;
+  margin: 10px 0;
 
-font-weight:700;
+  padding: 10px;
 
-margin: 10px 0;
+  border: 1px solid black;
 
-padding: 10px;
-
-border: 1px solid black;
-
-@media screen and (max-width: 900px){
-
-    
-    
+  @media screen and (max-width: 900px) {
     width: 75%;
 
-    padding:5px;
-    
+    padding: 5px;
+  }
+`;
+const Button = styled.button`
+  width: 40%;
 
-    
-    
-}
+  border: none;
 
-`
-const  Button = styled.button`
+  padding: 15px 20px;
 
-width: 40%;
+  background-color: #0c0c0c;
 
-border: none;
+  color: #dcca87;
 
-padding: 15px 20px;
+  cursor: pointer;
 
-background-color: #0C0C0C;
+  font-weight: 800;
 
-color:#DCCA87;
+  font-size: 20px;
 
-cursor: pointer;
+  transition: all 1s ease;
 
-font-weight: 800;
-
-font-size: 20px;
-
-transition: all 1s ease;
-
-
-&: disabled{
-
+  &: disabled {
     color: green;
 
     cursor: not-allowed;
-}
+  }
 
-&:hover{
-
+  &:hover {
     transform: scale(1.1);
 
     font-size: 20px;
+  }
 
-
-}
-
-
-@media screen and (max-width: 900px){
-
-    
-    
+  @media screen and (max-width: 900px) {
     padding: 5px 10px;
-    
-
-    
-    
-}
-
-`
-
+  }
+`;
 
 const LinkTo = styled.a`
+  margin: 5px 0px;
 
-margin: 5px 0px;
+  color: #0c0c0c;
+  font-size: 15px;
+  font-weight: bold;
 
-color: #0C0C0C;
-font-size: 15px;
-font-weight:bold;
+  text-decoration: underline;
 
-text-decoration: underline;
+  cursor: pointer;
+`;
 
-cursor: pointer;
-
-
-
-
-`
-
-
-const LinkClose = styled.div`
-
-
-
-
-
-
-`
-
- 
+const LinkClose = styled.div``;
 
 const Login = () => {
+  const [username, setUsername] = React.useState("");
 
+  const [password, setPassword] = React.useState("");
 
-    const [username, setUsername] = React.useState('');
+  const { isFetching, error, currentUser } = useSelector((state) => state.user);
 
-    const [password, setPassword] = React.useState('');
+  const user = useSelector((state) => state.user);
 
-    const {isFetching,error,currentUser} = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
-    const user = useSelector(state => state.user);
+  const handleLogin = (e) => {
+    e.preventDefault();
 
-    const dispatch = useDispatch();
+    login(dispatch, { username, password });
 
+    if (error) {
+      toast.error("Make sure you have registered", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
 
-    const handleLogin = (e) => {
-
-        e.preventDefault();
-
-        
-
-        login(dispatch, {username,password});
-
-
-        if(error){
-
-
-            toast.error('Make sure you have registered', {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                });
-
-                toast.error('username or password is incorrect', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    });
-
-
-
-        }else{
-
-         toast.success('Login successfully', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
-
-
-        }
+      toast.error("username or password is incorrect", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.success("Login successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
+  };
 
+  console.log(user);
 
-    console.log(user);
+  return (
+    <>
+      <Announcement />
 
+      <Navbar />
 
-    return (
+      <NavCategory />
 
+      <Container>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
 
-        <>
+        <Wrapper>
+          <LinkClose>
+            <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+              <Close
+                style={{
+                  color: "#DCCA87",
+                  backgroundColor: "#0C0C0C",
+                  height: "40px",
+                  width: "40px",
+                  borderRadius: "50%",
+                  cursor: "pointer",
+                  margin: "-40px",
+                }}
+              />
+            </Link>
+          </LinkClose>
 
-        <Announcement />
-      
-        <Navbar />
+          <Title>LOGIN</Title>
 
-        <NavCategory />
-            
-        <Container>
+          <Image src="/img/Marketing.png" alt="" />
 
-            
-
-            <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
+          <Form>
+            <Input
+              placeholder="usermane"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
             />
 
+            <Button onClick={handleLogin} disabled={isFetching}>
+              Login
+            </Button>
 
-            
+            {user.currentUser ? <Redirect to="/" /> : ""}
 
-            <Wrapper>
+            <LinkTo>DO NOT REMEMBER PASSWORD?</LinkTo>
 
+            <LinkTo>
+              <Link
+                style={{ color: "inherit", textDecoration: "none" }}
+                to="/register"
+              >
+                CREATE ACCOUNT
+              </Link>
+            </LinkTo>
+          </Form>
+        </Wrapper>
+      </Container>
+    </>
+  );
+};
 
-            <LinkClose>
-
-
-                <Link to="/" style={{color:"inherit", textDecoration:"none"}}>
-                
-                
-                
-               
-                
-                <Close style={{color:'#DCCA87', backgroundColor: "#0C0C0C", height:'40px', width:'40px', borderRadius:'50%', cursor:'pointer',margin:"-40px"}}/>
-                </Link>
-                
-            </LinkClose>
-
-                
-
-                <Title>LOGIN</Title>
-
-
-                <Image src="/img/Marketing.png" alt="" />
-
-               
-                <Form>
-
-
-                    <Input placeholder="usermane" onChange={(e) => setUsername(e.target.value)}/>
-                    <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
-                    
-
-                   
-
-                    <Button onClick={handleLogin} disabled={isFetching}> 
-                           
-                                    Login
-                     </Button>
-                    
-
-                    
-                     
-
-                    {user.currentUser ? <Redirect to="/"/> :  "" }
-
-
-                    <LinkTo>DO NOT REMEMBER PASSWORD?</LinkTo>
-
-                    <LinkTo>
-                    
-                            <Link style={{color:'inherit', textDecoration:'none'}} to="/register">
-                            
-                                    CREATE ACCOUNT
-                            </Link>
-                    
-                            
-                    
-                    
-                    </LinkTo>
-
-
-
-                   
-                </Form>
-
-                
-
-
-            </Wrapper>
-
-
-            
-            
-        </Container>
-
-        </>
-       
-    )
-}
-
-export default Login
+export default Login;

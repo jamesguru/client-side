@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Close } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+import { Router } from "react-router-dom";
+import { publicRequest } from "../requestMethods";
+import { county } from "../data";
 
 const Container = styled.div`
   width: 100%;
@@ -33,18 +38,21 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 500px;
+  width: 80%;
 
   background-color: white;
 
-  border-radius: 5px;
+  height: 70%;
 
-  padding: 30px;
+  padding: 50px;
+
+  margin:30px;
+
+  position: relative;
 
   display: flex;
 
   flex-direction: column;
-  position: relative;
 
   align-items: center;
 
@@ -56,17 +64,23 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.span`
-  font-weight: 700;
 
-  font-size: 18px;
+font-weight: 700;
 
-  display: block;
+font-size: 20px;
 
-  color: #d1411e;
+display: block;
 
-  margin-bottom: 20px;
+font-family: 'Coromorant Upright'
 
-  text-align: center;
+
+margin-bottom: 40px;
+
+
+text-align:center;
+
+
+
 `;
 
 const Head = styled.h2`
@@ -129,21 +143,27 @@ const Option = styled.option`
   font-weight: bold;
 `;
 
-const ModalLogin = ({ setOpen }) => {
+const ProductsModal = ({ setOpen }) => {
   return (
     <Container>
       <Wrapper>
-        <Title style={{ color: "black" }}>You are not authenticated</Title>
-        <Title style={{ color: "black" }}>Login to proceed</Title>
-
-        <Link to="/login" style={{ color: "inherit", textDecoration: "none" }}>
-          <Title style={{ textDecoration: "underline" }}>
-            Login to proceed
-          </Title>
-        </Link>
+        <Close
+          onClick={() => setOpen(false)}
+          style={{
+            position: "absolute",
+            top: "-12",
+            right: "-12",
+            color: "white",
+            backgroundColor: "red",
+            height: "35px",
+            width: "35px",
+            borderRadius: "50%",
+            cursor: "pointer",
+          }}
+        />
       </Wrapper>
     </Container>
   );
 };
 
-export default ModalLogin;
+export default ProductsModal;

@@ -77,12 +77,34 @@ const Option = styled.option`
   font-size: 16px;
   font-weight: 900;
 `;
-const SearchProductList = () => {
+
+const ShopContainer = styled.div`
+  margin: 15px;
+
+  background-color: #0c0c0c;
+  width: 80%;
+  padding: 10px;
+  font-family:'Roboto';
+  color: #dcca87;
+  text-align:justify;
+`;
+
+const ShopTitle = styled.h5`
+
+font-weight:900;
+`
+
+const Span = styled.span`
+width:40%;
+font-size:18px;
+`
+
+const Shop = () => {
   const location = useLocation();
 
-  const query = location.pathname.split("/")[2];
+  const cat = location.pathname.split("/")[2];
 
-  const cat = "";
+  const query = "";
 
   const [filters, setFilters] = React.useState({});
 
@@ -105,6 +127,23 @@ const SearchProductList = () => {
       <NavCategory />
 
       <Title>{query.toUpperCase()}</Title>
+
+      <ShopContainer>
+        <ShopTitle>Shop:</ShopTitle>
+        <Span>Credence</Span>
+        <ShopTitle>Location:</ShopTitle>
+        <Span>Nairobi</Span>
+        <ShopTitle>CALL US:</ShopTitle>
+        <Span>0727889290</Span>
+        <ShopTitle>About us:</ShopTitle>
+        <Span>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          
+        </Span>
+      </ShopContainer>
 
       <FilterContainer>
         <Filter>
@@ -189,4 +228,4 @@ const SearchProductList = () => {
   );
 };
 
-export default SearchProductList;
+export default Shop;

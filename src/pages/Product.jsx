@@ -75,9 +75,9 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h2`
-  font-weight: 200px;
+  font-weight: 600;
 
-  font-family: "Cormorant Upright";
+  font-family: "Roboto";
 
   margin: 20px;
 
@@ -88,6 +88,7 @@ const Title = styled.h2`
 
 const Desc = styled.p`
   margin: 20px 20px;
+  font-weight: 800;
 
   @media screen and (max-width: 1200px) {
     margin-left: 40px;
@@ -261,6 +262,7 @@ const Button = styled.button`
   font-size: 20px;
 
   font-weight: 900;
+  font-family: "Roboto";
 
   border: none;
 
@@ -305,7 +307,7 @@ const Wholesale = styled.div`
   font-size: 18px;
 
   margin: 20px;
-
+  font-family: "Roboto";
   padding: 10px;
 
   @media screen and (max-width: 600px) {
@@ -319,16 +321,6 @@ const WholesaleText = styled.span`
   display: block;
 
   animation: progress 0.5s ease alternate infinite;
-
-  @keyframes progress {
-    from {
-      transform: scale(0.95);
-    }
-
-    to {
-      transform: scale(1);
-    }
-  }
 `;
 
 const Rating = styled.div`
@@ -429,8 +421,6 @@ const Product = () => {
     minimumQuantity,
     quantity
   ) => {
-
-
     if (quantity > minimumQuantity && discountedPrice) {
       discountedPrice = wholePrice;
 
