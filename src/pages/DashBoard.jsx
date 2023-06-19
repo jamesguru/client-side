@@ -1,5 +1,8 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   margin: 0% 10%;
@@ -73,46 +76,112 @@ const Header = styled.span`
   font-size: 22px;
 `;
 
+const UploadImg = styled.button`
+  width: 100%;
+  border: none;
+
+  font-weight: 900;
+  font-size: 18px;
+  background-color: #0c0c0c;
+  color: #dcca87;
+  cursor: pointer;
+  margin: 20px 0px;
+`;
+
 let Concern = [];
 let Category = [];
 let SkinType = [];
 
 const DashBoard = () => {
   const [inputs, setInputs] = useState({});
+  const [file, setFile] = useState(null);
+  const [file2, setFile2] = useState(null);
+  const dispatch = useDispatch();
+  const [uploading, setUploading] = useState("uploading is 0%");
+  const [image, setImage] = useState("");
+  const user = useSelector((state) => state.user.currentUser);
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
     });
   };
 
-  const handleCategory=(cat)=>{
-  Category.push(cat)
+  const handleCategory = (cat) => {
+    Category.push(cat);
+  };
 
-  }
+  const handleSkinType = (skintype) => {
+    SkinType.push(skintype);
+  };
 
-  const handleSkinType =(skintype)=>{
-    SkinType.push(skintype)
-  }
-
-  const handleConcern =(concern)=>{
-Concern.push(concern)
-  }
+  const handleConcern = (concern) => {
+    Concern.push(concern);
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
 
-    const product = {...inputs,categories: Category, skintype:SkinType, concern:Concern};
-  
-    console.log(product)
-    
-  }
+    Category.push(user.seller);
+    Category.push('all');
+    const product = {
+      ...inputs,
+      img: image,
+      email: user.email,
+      wholesaleSeller:user.seller,
+      phone: user.phone,
+      categories: Category,
+      skintype: SkinType,
+      concern: Concern,
+    };
+
+    try {
+      publicRequest.post("/products/", product);
+
+      window.location.reload();
+    } catch (error) {}
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+
+    const data = new FormData();
+
+    data.append("file", file);
+    data.append("upload_preset", "uploads");
+
+    setUploading("uploading");
+
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/dap91fhxh/image/upload",
+        data
+      );
+
+      const { url } = uploadRes.data;
+
+      setImage(url);
+
+      setUploading("uploaded 100%");
+    } catch (error) {
+      console.log(error);
+
+      setUploading("uploading failed");
+    }
+  };
 
   return (
     <Container>
       <Heading>Create Product</Heading>
       <Wrapper>
         <Label>Image</Label>
-        <Input type="file" />
+        <Input
+          type="file"
+          id="file"
+          onChange={(e) => setFile(e.target.files[0])}
+        />
+        <UploadImg onClick={handleUpload}>upload</UploadImg>
+
+        <h4 style={{ color: "green", fontWeight: "bold" }}>{uploading}</h4>
         <Label>Video</Label>
         <Input type="file" />
         <Label>Title</Label>
@@ -131,17 +200,41 @@ Concern.push(concern)
           placeholder="description"
         />
         <Label>Original Price</Label>
-        <Input name ="originalPrice" type="number" placeholder="original price" onChange={handleChange} />
+        <Input
+          name="originalPrice"
+          type="number"
+          placeholder="original price"
+          onChange={handleChange}
+        />
         <Label>Discount Price</Label>
-        <Input name ="discountedPrice" type="number" placeholder="discounted price" onChange={handleChange} />
-        <Label>Wholeseller</Label>
-        <Input name ="wholesaleSeller" type="text" placeholder="wholesale Seller name" onChange={handleChange}/>
+        <Input
+          name="discountedPrice"
+          type="number"
+          placeholder="discounted price"
+          onChange={handleChange}
+        />
+        
         <Label>Wholesale Price</Label>
-        <Input name ="wholesalePrice" type="number" placeholder="wholesale price" onChange={handleChange} />
+        <Input
+          name="wholesalePrice"
+          type="number"
+          placeholder="wholesale price"
+          onChange={handleChange}
+        />
         <Label>Wholesale Minimum Quantity</Label>
-        <Input name ="wholesaleMinimumQuantity" type="number" placeholder="wholesale minimum quantity" onChange={handleChange} />
+        <Input
+          name="wholesaleMinimumQuantity"
+          type="number"
+          placeholder="wholesale minimum quantity"
+          onChange={handleChange}
+        />
         <Label>Brand</Label>
-        <Input type="text" name ="brand" placeholder="Kylie" onChange={handleChange} />
+        <Input
+          type="text"
+          name="brand"
+          placeholder="Kylie"
+          onChange={handleChange}
+        />
 
         <Cat>
           <Header>Category</Header>
@@ -152,7 +245,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={() => handleCategory('popular')}
+                onClick={() => handleCategory("popular")}
               />
             </Item>
 
@@ -162,7 +255,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('all')}
+                onClick={() => handleCategory("all")}
               />
             </Item>
             <Item>
@@ -171,7 +264,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('wholesale')}
+                onClick={() => handleCategory("wholesale")}
               />
             </Item>
             <Item>
@@ -180,13 +273,15 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('discount')}
+                onClick={() => handleCategory("discount")}
               />
             </Item>
             <Item>
               <label>Nail Products</label>
-              <Input name="category" type="checkbox"
-               onClick={()=>handleCategory('nailproducts')}
+              <Input
+                name="category"
+                type="checkbox"
+                onClick={() => handleCategory("nailproducts")}
               />
             </Item>
             <Item>
@@ -195,7 +290,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('faceproducts')}
+                onClick={() => handleCategory("faceproducts")}
               />
             </Item>
             <Item>
@@ -204,7 +299,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('gifts')}
+                onClick={() => handleCategory("gifts")}
               />
             </Item>
             <Item>
@@ -213,7 +308,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('bodyproducts')}
+                onClick={() => handleCategory("bodyproducts")}
               />
             </Item>
             <Item>
@@ -222,7 +317,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('hairproducts')}
+                onClick={() => handleCategory("hairproducts")}
               />
             </Item>
             <Item>
@@ -231,7 +326,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('nailsproducts')}
+                onClick={() => handleCategory("nailsproducts")}
               />
             </Item>
             <Item>
@@ -240,7 +335,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('jewerelly')}
+                onClick={() => handleCategory("jewerelly")}
               />
             </Item>
             <Item>
@@ -249,7 +344,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('serums')}
+                onClick={() => handleCategory("serums")}
               />
             </Item>
             <Item>
@@ -258,7 +353,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('moisturizers')}
+                onClick={() => handleCategory("moisturizers")}
               />
             </Item>
             <Item>
@@ -267,7 +362,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('toners')}
+                onClick={() => handleCategory("toners")}
               />
             </Item>
           </CatWrapper>
@@ -282,7 +377,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={() => handleConcern('Dry Skin')}
+                onClick={() => handleConcern("Dry Skin")}
               />
             </Item>
 
@@ -292,7 +387,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Pigmentation')}
+                onClick={() => handleConcern("Pigmentation")}
               />
             </Item>
             <Item>
@@ -301,7 +396,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Oil Control')}
+                onClick={() => handleConcern("Oil Control")}
               />
             </Item>
             <Item>
@@ -310,7 +405,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Anti Acne')}
+                onClick={() => handleConcern("Anti Acne")}
               />
             </Item>
             <Item>
@@ -319,7 +414,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Sunburn')}
+                onClick={() => handleConcern("Sunburn")}
               />
             </Item>
             <Item>
@@ -328,7 +423,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Skin Brightening')}
+                onClick={() => handleConcern("Skin Brightening")}
               />
             </Item>
             <Item>
@@ -337,7 +432,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Tan Removal')}
+                onClick={() => handleConcern("Tan Removal")}
               />
             </Item>
             <Item>
@@ -346,7 +441,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Night Routine')}
+                onClick={() => handleConcern("Night Routine")}
               />
             </Item>
             <Item>
@@ -355,7 +450,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('UV Protection')}
+                onClick={() => handleConcern("UV Protection")}
               />
             </Item>
             <Item>
@@ -364,7 +459,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Damaged Hair')}
+                onClick={() => handleConcern("Damaged Hair")}
               />
             </Item>
             <Item>
@@ -373,7 +468,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Frizzy Hair')}
+                onClick={() => handleConcern("Frizzy Hair")}
               />
             </Item>
 
@@ -383,7 +478,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Stretch Marks')}
+                onClick={() => handleConcern("Stretch Marks")}
               />
             </Item>
             <Item>
@@ -392,7 +487,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Color Protection')}
+                onClick={() => handleConcern("Color Protection")}
               />
             </Item>
             <Item>
@@ -401,7 +496,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Dry Hair')}
+                onClick={() => handleConcern("Dry Hair")}
               />
             </Item>
             <Item>
@@ -410,7 +505,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Soothing')}
+                onClick={() => handleConcern("Soothing")}
               />
             </Item>
             <Item>
@@ -419,7 +514,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Dandruff')}
+                onClick={() => handleConcern("Dandruff")}
               />
             </Item>
             <Item>
@@ -428,7 +523,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Greying')}
+                onClick={() => handleConcern("Greying")}
               />
             </Item>
             <Item>
@@ -437,7 +532,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Hair Fall')}
+                onClick={() => handleConcern("Hair Fall")}
               />
             </Item>
             <Item>
@@ -446,7 +541,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleConcern('Hair Control')}
+                onClick={() => handleConcern("Hair Control")}
               />
             </Item>
           </CatWrapper>
@@ -461,7 +556,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={() => handleSkinType('All')}
+                onClick={() => handleSkinType("All")}
               />
             </Item>
 
@@ -471,7 +566,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('Oily')}
+                onClick={() => handleCategory("Oily")}
               />
             </Item>
             <Item>
@@ -480,7 +575,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('Sensitive')}
+                onClick={() => handleCategory("Sensitive")}
               />
             </Item>
             <Item>
@@ -489,7 +584,7 @@ Concern.push(concern)
                 name="category"
                 placeholder="jeans,pajamas"
                 type="checkbox"
-                onClick={()=>handleCategory('Normal')}
+                onClick={() => handleCategory("Normal")}
               />
             </Item>
           </CatWrapper>
@@ -500,7 +595,7 @@ Concern.push(concern)
           <option value="false">No</option>
         </Select>
 
-        <Button onClick={handleClick}>Upload</Button>
+        <Button onClick={handleClick}>Create Product</Button>
       </Wrapper>
     </Container>
   );

@@ -141,7 +141,7 @@ const Option = styled.option`
   font-weight: bold;
 `;
 
-const Modal = ({ total, products, setOpen }) => {
+const Modal = ({ total, products, setOpen,email}) => {
   const [name, setName] = React.useState("");
 
   const [address, setAddress] = React.useState("");
@@ -171,6 +171,8 @@ const Modal = ({ total, products, setOpen }) => {
       address: address,
       phone: phone,
       total: total,
+      email:user.email,
+      selleremail:email,
     };
 
     await publicRequest.post("/orders/", order);

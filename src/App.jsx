@@ -23,6 +23,7 @@ import Seller from "./pages/Seller";
 import DashBoard from "./pages/DashBoard";
 import Menu from "./pages/Menu";
 import Shop from "./pages/Shop";
+import ProductDataGrid from "./components/ProductDataGrid";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentuser);
@@ -66,7 +67,7 @@ const App = () => {
           <Route path="/orders/:id">
             <Orders />
           </Route>
-
+         
           <Route path="/gallery">
             <Gallery />
           </Route>

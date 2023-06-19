@@ -387,6 +387,8 @@ const Cart = () => {
     });
   };
 
+  console.log(cart)
+
   return (
     <Container>
       <Announcement />
@@ -533,7 +535,7 @@ const Cart = () => {
       {user.currentUser ? "" : <ModalLogin setOpen={setOpen} />}
 
       {open && cart.total > 0 ? (
-        <Modal setOpen={setOpen} total={cart.total} products={cart.products} />
+        <Modal setOpen={setOpen} total={cart.total} products={cart.products} email={cart.email} />
       ) : (
         ""
       )}

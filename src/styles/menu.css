@@ -1,8 +1,44 @@
-.nav-item{
+.nav-item {
+  font-size: 20px;
+  font-family: "Roboto";
+  color: black;
+}
 
-    font-weight: 900;
-    font-size: 20px;
-    font-family: "Roboto";
-    color: black;
-    
-    }
+.products {
+  display: flex;
+  align-items: center;
+}
+
+.products img {
+  height: 30px;
+  width: 30px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+.products h5 {
+  font-weight: 900;
+  font-size: 15px;
+}
+span{
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.delete {
+
+  border: none;
+  color: red;
+  padding: 3px;
+  font-weight: 900;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.update {
+  background-color: teal;
+  border: none;
+  color: white;
+  padding: 3px;
+  font-weight: 900;
+  cursor: pointer;
+}

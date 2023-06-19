@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { logOut } from "../redux/userRedux";
-import JsPDF from 'jspdf';
+import { DataGrid } from "@material-ui/data-grid";
+import JsPDF from "jspdf";
 import "../styles/menu.css";
 import {
   BrowserRouter as Router,
@@ -19,7 +20,14 @@ import Tabs from "react-bootstrap/Tabs";
 import Products from "../components/Products";
 import Product from "../components/Product";
 import { publicRequest } from "../requestMethods";
-import { FontDownload, FontDownloadOutlined } from "@material-ui/icons";
+import {
+  FontDownload,
+  DeleteOutline,
+  DataUsageSharp,
+} from "@material-ui/icons";
+import Table from "react-bootstrap/Table";
+import ProductDataGrid from "../components/ProductDataGrid";
+
 const Container = styled.div`
   margin: 50px;
   font-weight: 900px;
@@ -61,18 +69,17 @@ const Button = styled.button`
   color: #dcca87;
   background-color: #0c0c0c;
   cursor: pointer;
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 `;
-const Header =styled.h5`
-font-family:"Roboto";
-`
-
+const Header = styled.h5`
+  font-family: "Roboto";
+`;
 
 const Menu = () => {
   const [open, setOpen] = React.useState(false);
-  const [products, setproducts] = React.useState([]);
+  const [data, setproducts] = React.useState([]);
   const user = useSelector((state) => state.user.currentUser);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -90,7 +97,9 @@ const Menu = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await publicRequest.get(`/products?category=all`);
+        const res = await publicRequest.get(
+          `/products?category=${user.seller}`
+        );
 
         setproducts(res.data);
       } catch (error) {}
@@ -100,14 +109,55 @@ const Menu = () => {
   }, []);
 
   const generatePDF = () => {
-
-    const report = new JsPDF('landscape','pt','a3');
-    report.html(document.querySelector('.product')).then(() => {
-        report.save('report.pdf');
+    const report = new JsPDF("landscape", "pt", "a3");
+    report.html(document.querySelector(".product")).then(() => {
+      report.save("products.pdf");
     });
+  };
+  const columns = [
+    { field: "_id", headerName: "ID", width: 90 },
 
-  }
+    {
+      field: "product",
+      headerName: "Products",
+      width: 200,
+      renderCell: (params) => {
+        return (
+          <div className="productListItem">
+            <img
+              className="productListImg"
+              src={params.row.img}
+              alt=""
+              height="100px"
+              width="100px"
+            />
+            {params.row.title}
+          </div>
+        );
+      },
+    },
 
+    {
+      field: "price",
+      headerName: "Price",
+      width: 160,
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+            <button className="productListEdit">Edit</button>
+
+            <DeleteOutline className="productListDelete" />
+          </>
+        );
+      },
+    },
+  ];
+  console.log(data);
   return (
     <Container>
       <Tabs
@@ -116,27 +166,89 @@ const Menu = () => {
         className="mb-3"
       >
         <Tab eventKey="profile" title="Home">
-          <Button onClick={generatePDF}>Download PDF <FontDownload></FontDownload></Button>
+          <Button onClick={generatePDF}>
+            Download PDF <FontDownload></FontDownload>
+          </Button>
           <div className="product">
             <Header>Credence Products</Header>
-          <Wrapper>
-            {products.map((item, index) => (
-              <Product item={item} key={index} />
-            ))}
-          </Wrapper>
+            <Wrapper>
+              {data.map((item, index) => (
+                <Product item={item} key={index} />
+              ))}
+            </Wrapper>
           </div>
         </Tab>
         <Tab eventKey="home" title="Add Product">
           <DashBoard />
         </Tab>
         <Tab eventKey="manage" title="Manage">
-          manage
+        <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Stock</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((product, index) => (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>
+                    <div className="products">
+                      <img src={product.img} alt="" />
+                      <h5>{product.title}</h5>
+                    </div>
+                  </td>
+                  <td>
+                    <button className="update">Update</button>
+                  </td>
+                  <td>
+                    <DeleteOutline className="delete"/>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Tab>
         <Tab eventKey="orders" title="Orders">
-          Orders
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Orders</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((product, index) => (
+                <tr>
+                  <td>{index + 1}</td>
+                  <td>
+                    <div className="products">
+                      <img src={product.img} alt="" />
+                      <h5>{product.title}</h5>
+                    </div>
+                  </td>
+                  <td>
+                    <span>pending</span>
+                  </td>
+                  <td>
+                    <button className="update">Update</button>
+                  </td>
+                  <td>
+                    <DeleteOutline className="delete"/>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
         </Tab>
         <Tab eventKey="contact" title="My Account">
-         <Button onClick={handleLogout}>Logout</Button>
+          <Button onClick={handleLogout}>Logout</Button>
         </Tab>
       </Tabs>
     </Container>

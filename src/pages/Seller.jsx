@@ -108,7 +108,7 @@ const Seller = () => {
         <Input placeholder="password" type="password" onChange={(e) => setPassword(e.target.value)} />
 
         <Button onClick={handleLogin} disabled={isFetching}>Login</Button>
-        {user.currentUser ? <Redirect to="/menu" /> : ""}
+        {user.currentUser && user.currentUser.seller? <Redirect to="/menu" /> : ""}
       </Wrapper>
     </Container>
   );
